@@ -24,8 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-q)fit=6^g0s!3f3kr5y_6b%-t-wm(*r9676we*^s9c3u5gq87n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
+DEBUG = True
 ALLOWED_HOSTS = ['fajn-django-5787.rostiapp.cz']
 
 

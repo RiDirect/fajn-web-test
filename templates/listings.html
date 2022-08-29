@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{%static 'css/header.css'%}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/listings.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
     <link rel="icon" type="image/png" href="images/logos/FAJN_favinew.png">
@@ -17,43 +17,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 
-    <title>Dynamic %Category% Title</title>
+    <title>Dynamic Category Title</title>
 
 </head>
 <header>
-    <link rel="stylesheet" href="{%static 'css/header.css'%}">
-    
-      <div class="head">
-        <div class="row">
-          <div class="column">
-              <div class="info_div">
-              <p class="mailtab">info@fajn-nabytek.cz</p>
-              <p class="phonetab">+420 722 043 077</p>
-              </div>
-            </div>
-            <div class="column">
-              <div class="headimg">
-                <img src="images/logos/Fajn_logo_B&W_web.svg" href="#" width=80 height=60 >
-              </div>
-            </div>
-            <div class="column">
-              <div class="searchbar_div">
-                <input type="text" placeholder="Hledat..">
-              </div>
-            </div>
-        </div>
-          </div>
-
+{%include 'partials/header.html'%}
+</header>
 <body>
-    {%include 'partials/header.html'%}
-<div class="cat-body">
+
     <div class="category-header">
         <div class="category-header-columns">
         <div class="category-title">
             <h1>Postele</h1>
         </div>
         <div class="category-sec-title">
-            Postel je základním kamenem každé ložnice. Pohodlnost a komfort jsou podstatné, ale neméně důležitý je elegantní design. Velká ložná plocha zvyšuje pohodlí, vysoké nožky zase umožní snadný úklid.
         </div>
     </div>
     </div>
@@ -65,12 +42,10 @@
         </div>
     </div>
 
+
 <div class="product-listings">
-    <div class="product-container">
-        <body>
-            {%if listings%}
-                {%for listing in listings%}
-            
+{%if listings%}
+{%for listing in listings%}
                 <div class="product-container">
                     <div class="product-card">
                         <div class="imgBx">
@@ -87,7 +62,7 @@
                                 <h3 class="sklad-dyn">{{ listing.dostupnost }}</h3>
                             </div>
             
-                            <div class="price">
+                            <div class="color">
                                 <h3>Cena: </h3>
                                 <h3 class="price-num">{{ listing.cena}} Kč</h3>
                             </div>
@@ -96,7 +71,6 @@
             
                     </div>
                 </div>
-</div>
             
             
             
