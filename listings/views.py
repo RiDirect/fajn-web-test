@@ -8,7 +8,7 @@ from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 def index(request):
     listings = models.Produkt.objects.all()
 
-    paginator = Paginator(listings,3)
+    paginator = Paginator(listings,20)
     page = request.GET.get('page')
     paged_listings = paginator.get_page(page)
     context = {
