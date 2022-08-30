@@ -17,6 +17,14 @@ def index(request):
 
     }
     return render(request,'listings.html',context)
+def container(request):
+        
+        
+     return render(request,'container.html')
+def listing(request):
+        
+        
+     return render(request,'listing.html')
 
 # def listing(request,listing_id):
 #         listing = models.Produkt.objects.get(pk=listing_id)

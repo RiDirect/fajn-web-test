@@ -82,9 +82,9 @@ WSGI_APPLICATION = 'Nabtek.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'cmofajn_nabytekcz_2242',
-        'USER': 'cmofajn_nabytekcz_2242',
-        'PASSWORD': 'postgres', 
+        'NAME': 'cmofajn_nabytekcz_2243',
+        'USER': 'cmofajn_nabytekcz_2243',
+        'PASSWORD': 'FajnAdmin123+', 
         'HOST': 'store5.rosti.cz',
         'PORT': '5432',
     }
