@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-q)fit=6^g0s!3f3kr5y_6b%-t-wm(*r9676we*^s9c3u5gq87n
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['fajn-nabytek.eu']
+ALLOWED_HOSTS = ['fajn-nabytek.eu','www.fajn-nabytek.eu']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
 
 ]
+
 
 MIDDLEWARE = [
     
