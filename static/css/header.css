@@ -49,12 +49,12 @@ header {
 
 
 /* Navbar CSS */
-@media screen and (max-width: 1920px) {
+/* @media screen and (max-width: 1920px) {
 .nav-item {
     width: 25%;
     text-align: center;
  }
-}
+} */
 
 @media screen and (max-width: 1200px) {
     .nav-item {
