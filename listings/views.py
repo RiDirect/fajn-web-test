@@ -21,10 +21,15 @@ def container(request):
         
         
      return render(request,'container.html')
+
 def listing(request):
         
         
      return render(request,'listing.html')
+
+def category_listings(request):
+
+     return render(request,'category_listings.html')
 
 # def listing(request,listing_id):
 #         listing = models.Produkt.objects.get(pk=listing_id)

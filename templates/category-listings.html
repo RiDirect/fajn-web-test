@@ -22,7 +22,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,300&display=swap"
         rel="stylesheet">
 
-    <title>{{listing.objekt}}</title>
+    <title>{{listing.sub_category}}</title>
     {%endfor%}
     {%endif%}
 </head>
@@ -33,12 +33,11 @@
 <body>
     {%if listings%}
     {%for listing in listings%}
-    {% if forloop.revcounter < 2 %} 
-    <div class="cat-body">
+    {% if forloop.revcounter < 2 %} <div class="cat-body">
         <div class="category-header">
             <div class="category-header-columns">
                 <div class="category-title">
-                    <h1>{{listing.objekt}}</h1>
+                    <h1>{{listing.sub_category}}</h1>
                 </div>
                 <div class="category-sec-title">
                     Postel je základním kamenem každé ložnice. Pohodlnost a komfort jsou podstatné, ale neméně důležitý
@@ -48,10 +47,10 @@
             <div class="cat-links">
                 <div class="card w-75">
                     <div class="card-body">
-                      <h5 class="card-title">%Category%</h5>
-                      <a href="#" class="btn btn-primary">Zobrazit</a>
+                        <h5 class="card-title">%Category%</h5>
+                        <a href="#" class="btn btn-primary">Zobrazit</a>
                     </div>
-                  </div>
+                </div>
             </div>
         </div>
         {%endif%}

@@ -4,7 +4,7 @@
     <div class="product-card">
         <div class="imgBx">
 
-            <img src="{{ listing.pic.url }}" alt={{listing.description}}>
+            <img src="{{ listing.primary_img.url }}" alt={{listing.short_description}}>
         </div>
 
         <div class="contentBx">
@@ -13,12 +13,12 @@
 
             <div class="sklad">
                 <h3>Dostupnost: </h3>
-                <h3 class="sklad-dyn">{{listing.dostupnost}}</h3>
+                <h3 class="sklad-dyn">{{listing.stock}}</h3>
             </div>
 
             <div class="price">
                 <h3>Cena: </h3>
-                <h3 class="price-num">{{ listing.cena }} Kč</h3>
+                <h3 class="price-num">{{ listing.price }} Kč</h3>
             </div>
             <a href="#">Zobrazit</a>
         </div>
