@@ -3,7 +3,7 @@ from . import models
 from listings import urls
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 
-
+# listings = models.Produkt.objects.filter(typobjektu__name__startswith="Ča")
 # Create your views here.
 def index(request):
     listings = models.Produkt.objects.all()

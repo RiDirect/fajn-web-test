@@ -27,9 +27,11 @@ class TypObjektu(models.Model):
     description = models.TextField(max_length=300)
     def __str__(self):
         return self.name
+def img_path(instance, filename):
+    return f"{instance.objekt}/{instance.typobjektu}/{filename}"
 class Produkt(models.Model):
 
-    pic = models.ImageField(upload_to='photos/%Kategorie/%Mistnost/%Objekt/%TypObjektu/')
+    pic = models.ImageField(upload_to=img_path, null=False, blank=False)
     name = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
     dostupnost = models.CharField(max_length=200)
