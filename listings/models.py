@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils.safestring import mark_safe
 # Create your models here.
 
 
@@ -38,9 +38,12 @@ class Sub_sub_Category(models.Model):
         return self.name
 def img_path(instance, filename):
     return f"{instance.main_category}/{instance.category}/{instance.sub_category}/{filename}"
+
 class Brand(models.Model):
     brand_id=models.IntegerField()
     name = models.CharField(max_length=200)
+    def __str__(self):
+        return self.name
 
 class Produkt(models.Model):
     ean = models.ForeignKey(Brand,blank = True,null =True,related_name='ean',on_delete=models.PROTECT)
@@ -64,8 +67,13 @@ class Produkt(models.Model):
     stock = models.IntegerField()
     brand = models.ForeignKey(Brand,blank = True,null =True,related_name='brand',on_delete=models.PROTECT)
     eta = models.IntegerField()
-    def __str__(self):
-        return self.name
+
+    # def admin_photo(self):
+    #     return mark
+    # def __str__(self):
+    #     return mark_safe('<img src="{}" width="100" />'.format(self.primary_img.url))
+    # admin_photo.short_description='Image'
+    # admin_photo.allow_tags=True
 
 def img_path_varianta(instance, filename):
     return f"{instance.main_category}/{instance.category}/{instance.sub_category}/{instance.product_name}/{instance.varianta_img}"

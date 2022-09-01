@@ -28,8 +28,17 @@ def listing(request):
      return render(request,'listing.html')
 
 def category_listings(request):
+     listings = models.Produkt.objects.all()
 
-     return render(request,'category_listings.html')
+     paginator = Paginator(listings,12)
+     page = request.GET.get('page')
+     paged_listings = paginator.get_page(page)
+     context = {
+               'listings': paged_listings,
+               
+
+     }
+     return render(request,'category_listings.html',context)
 
 # def listing(request,listing_id):
 #         listing = models.Produkt.objects.get(pk=listing_id)
