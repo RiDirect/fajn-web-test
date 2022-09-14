@@ -1,16 +1,12 @@
-* {
-    padding: 0;
-    margin: 0;
-    font-family: 'Rubik', sans-serif;
-}
-
 .cat-body {
-    padding: 50px 100px 150px 100px;
+    display: block;
+    padding-left: 10px;
+    padding-right: 10px;
+    min-height: 100vh;  
 }
 
 .category-header-columns {
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
     text-align: center;
     display: flex;
 }
@@ -24,7 +20,7 @@
 }
 
 .filters-column {
-    width: 15%;
+    width: 14%;
     float: left;
     text-align: center;
     border: solid 1px;
@@ -32,7 +28,7 @@
 }
 .product-listings {
     width: 85%;
-    float:right;
+    float: right;
     padding-left: 0px;
     padding-top: 50px;
 }

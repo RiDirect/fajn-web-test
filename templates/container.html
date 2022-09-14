@@ -9,16 +9,16 @@
 
         <div class="contentBx">
 
-            <h2>{{ listing.name}}</h2>
+            <h2>{{listing.name}}</h2>
 
             <div class="sklad">
-                <h3>Dostupnost: </h3>
-                <h3 class="sklad-dyn">{{listing.stock}}</h3>
+                <h3>Dostupnost:</h3>
+                <h3 class="sklad-dyn">do {{listing.eta}} týdnů</h3>
             </div>
 
             <div class="price">
                 <h3>Cena: </h3>
-                <h3 class="price-num">{{ listing.price }} Kč</h3>
+                <h3 class="price-num">{{listing.price}} Kč</h3>
             </div>
             <a href="#">Zobrazit</a>
         </div>
