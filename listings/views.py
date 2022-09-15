@@ -23,9 +23,13 @@ def container(request):
      return render(request,'container.html')
 
 def listing(request):
-        
-        
-     return render(request,'listing.html')
+     listings = models.Produkt.objects.all()
+     context = {
+            'listings': listings
+           
+
+    }
+     return render(request,'listing.html',context)
 
 def category_listings(request):
      listings = models.Produkt.objects.all()

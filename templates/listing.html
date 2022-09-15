@@ -1,7 +1,54 @@
 {%load static%}
 <!DOCTYPE html>
 <html lang="cz">
-
-Dělej to kurva v PHP ty vyfetlo
-
+    <head>
+        {%if listings%}
+        {%for listing in listings%}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{%static 'css/header.css'%}">
+        <link rel="stylesheet" href="{%static 'css/footer.css'%}">
+        <link rel="stylesheet" href="{%static 'css/listing.css'%}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="icon" type="image/png" href="{% static 'img/logo2.svg' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    
+        <title>{{listing.name}}</title>
+        {%endfor%}
+        {%endif%}
+    </head>
+<body>
+<header>
+    {%include 'partials/header.html'%}
+</header>
+<div class="single-body">
+    <div class="product-tabs">
+        <div class="product-att">
+            <div><h1 class="product-name">Product name</h1></div>
+            <div><p class="short-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus odio leo, hendrerit sed facilisis venenatis, posuere a arcu. Sed dapibus enim non tincidunt ornare. Curabitur non tempus nibh. Phasellus consectetur finibus dignissim. Aenean sit amet ultrices nibh. Vestibulum posuere ipsum vitae sapien vulputate, vehicula tempor orci efficitur</p></div>
+        </div>
+        <div class="product-img">
+            <div class="main-img">
+                <img src="/media/Ložnice/Postele/fdsa/sabrina1.jpg" alt="%img_alt">
+            </div>
+            <div class="alt-imgs">
+                <img src="/media/Ložnice/Postele/fdsa/sabrina1.jpg" alt="%img_alt">
+                <img src="/media/Ložnice/Postele/fdsa/sabrina1.jpg" alt="%img_alt">
+                <img src="/media/Ložnice/Postele/fdsa/sabrina1.jpg" alt="%img_alt">
+                <img src="/media/Ložnice/Postele/fdsa/sabrina1.jpg" alt="%img_alt">
+            </div>
+        </div>
+        
+    </div>
+</div>
+<footer>
+    {%include 'partials/footer.html'%}
+</footer>
+</body>
 </html>

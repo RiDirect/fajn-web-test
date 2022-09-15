@@ -37,9 +37,34 @@ header {
     }
 
 .info_div {
-    display: inline-flex;
+    display: flex;
     padding: 0px 50px 0px 50px;
     margin-top: 20px;
+    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: 1.2px;
+    padding-bottom: 5px;
+    padding-left: 50px;
+    color: white;
+}
+
+.info_div span {
+    padding-left: 50px;
+}
+
+.info_div span a {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    
+}
+
+.info_div span a:hover {
+    color: black;
+}
+
+.info_div span i {
+    padding-right: 10px;
 }
 
 .mailtab {
