@@ -45,15 +45,31 @@ class Brand(models.Model):
     def __str__(self):
         return self.name
 
+def img_path_varianta(instance, filename):
+    return f"{instance.main_category}/{instance.category}/{instance.sub_category}/{instance.product_name}/{instance.varianta_img}"
+def img_path_barva(instance, filename):
+    return f"{instance.main_category}/{instance.category}/{instance.sub_category}/{instance.product_name}/{instance.barva_img}"
+
+class Variants(models.Model):
+    name = models.CharField(max_length=200)
+    rozmery_sirka = models.IntegerField()
+    rozmery_delka = models.IntegerField()
+    varianta_img = models.ImageField(upload_to=img_path_varianta, null=True, blank=True)
+    barva = models.CharField(max_length=200)
+    barva_img = models.ImageField(upload_to=img_path_barva, null=True, blank=True)
+    
+    def __str__(self):
+        return self.name
 class Produkt(models.Model):
     ean = models.ForeignKey(Brand,blank = True,null =True,related_name='ean',on_delete=models.PROTECT)
+    varianta = models.ForeignKey(Variants,blank = True,null =True,related_name='varianta',on_delete=models.PROTECT)
     name = models.CharField(max_length=200)
     main_category = models.ForeignKey(Main_Category,blank = True,null =True,related_name='mistnosti',on_delete=models.PROTECT)
     category = models.ForeignKey(Sub_Category,blank = True,null =True,related_name='category',on_delete=models.PROTECT)
     sub_category = models.ForeignKey(Sub_sub_Category,blank = True,null =True,related_name='subcategory',on_delete=models.PROTECT)
     price = models.DecimalField(max_digits=8,decimal_places = 1)
     short_description= models.TextField(max_length=600)
-    long_description = models.TextField(max_length=600)
+    long_description = models.TextField(max_length=3000)
     primary_img = models.ImageField(upload_to=img_path, null=False, blank=False)
     primary_alt = models.CharField(max_length=200)
     img1= models.ImageField(upload_to=img_path, null=True, blank=True)
@@ -75,16 +91,3 @@ class Produkt(models.Model):
     # admin_photo.short_description='Image'
     # admin_photo.allow_tags=True
 
-def img_path_varianta(instance, filename):
-    return f"{instance.main_category}/{instance.category}/{instance.sub_category}/{instance.product_name}/{instance.varianta_img}"
-def img_path_barva(instance, filename):
-    return f"{instance.main_category}/{instance.category}/{instance.sub_category}/{instance.product_name}/{instance.barva_img}"
-
-class Variants(models.Model):
-    eanv=models.ForeignKey(Produkt,blank = True,null =True,related_name='eanv',on_delete=models.PROTECT)
-    product_name = models.ForeignKey(Produkt,blank = True,null =True,related_name='product_name',on_delete=models.PROTECT)
-    rozmery_sirka = models.IntegerField()
-    rozmery_delka = models.IntegerField()
-    varianta_img = models.ImageField(upload_to=img_path_varianta, null=True, blank=True)
-    barva = models.CharField(max_length=200)
-    barva_img = models.ImageField(upload_to=img_path_barva, null=True, blank=True)

@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html lang="cz">
     <head>
-        {%if listings%}
-        {%for listing in listings%}
+        {%if listing%}
+        
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -18,9 +18,10 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
         <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+        <script src="/static/js/bootstrap.min.js"></script>
     
         <title>{{listing.name}}</title>
-        {%endfor%}
+
         {%endif%}
     </head>
 <body>
@@ -30,25 +31,59 @@
 <div class="single-body">
     <div class="product-tabs">
         <div class="product-att">
-            <div><h1 class="product-name">Product name</h1></div>
-            <div><p class="short-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus odio leo, hendrerit sed facilisis venenatis, posuere a arcu. Sed dapibus enim non tincidunt ornare. Curabitur non tempus nibh. Phasellus consectetur finibus dignissim. Aenean sit amet ultrices nibh. Vestibulum posuere ipsum vitae sapien vulputate, vehicula tempor orci efficitur</p></div>
+            <div><h1 class="product-name">{{listing.name}}</h1></div>
+            <div><p class="short-desc">{{listing.short_description}}</p></div>
+           
+            <div><p>{{listing.ean.brand_id}}-000{{listing.id}}/00{{listing.varianta.id}}</p></div>
+            {% if listing.id > 9 %}
+            <div><p>{{listing.ean.brand_id}}-00{{listing.id}}/00{{listing.varianta.id}}</p></div>
+            {%endif%}
+            {% if listing.id > 99 %}
+            <div><p>{{listing.ean.brand_id}}-0{{listing.id}}/00{{listing.varianta.id}}</p></div>
+            {%endif%}
         </div>
         <div class="product-img">
             <div class="main-img">
-                <img src="/media/Ložnice/Postele/fdsa/sabrina1.jpg" alt="%img_alt">
+                <img src="{{ listing.primary_img.url}}" alt="{{listing.primary_alt}}">
             </div>
             <div class="alt-imgs">
-                <img src="/media/Ložnice/Postele/fdsa/sabrina1.jpg" alt="%img_alt">
-                <img src="/media/Ložnice/Postele/fdsa/sabrina1.jpg" alt="%img_alt">
-                <img src="/media/Ložnice/Postele/fdsa/sabrina1.jpg" alt="%img_alt">
-                <img src="/media/Ložnice/Postele/fdsa/sabrina1.jpg" alt="%img_alt">
+                <img src="{{listing.img1.url}}" alt="%img_alt">
+                <img src="{{listing.img2.url}}" alt="%img_alt">
+                <img src="{{listing.img3.url}}" alt="%img_alt">
+                <img src="{{listing.img4.url}}" alt="%img_alt">
             </div>
         </div>
         
     </div>
+    <div class="after-tabs">
+        <div class="description-tab">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                  <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Popis produktu</button>
+                  <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Hodnocení</button>
+                </div>
+              </nav>
+              <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="product-desc">
+                        {{listing.long_description}}
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    Profile
+                </div>
+              </div>
+    <script>
+    var firstTabEl = document.querySelector('#navtab')
+    var firstTab = new bootstrap.Tab(firstTabEl)
+
+    firstTab.show()
+  </script>
+        </div>
+    </div> 
 </div>
 <footer>
-    {%include 'partials/footer.html'%}
+{%include 'partials/footer.html'%}
 </footer>
-</body>
+</body> 
 </html>

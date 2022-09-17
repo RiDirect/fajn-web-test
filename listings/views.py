@@ -22,10 +22,10 @@ def container(request):
         
      return render(request,'container.html')
 
-def listing(request):
-     listings = models.Produkt.objects.all()
+def listing(request,listing_id):
+     listing = models.Produkt.objects.get(id=listing_id)
      context = {
-            'listings': listings
+            'listing': listing
            
 
     }

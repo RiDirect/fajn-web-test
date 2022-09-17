@@ -19,7 +19,7 @@ from . import views
 urlpatterns = [
     path('',views.index,name="listings"),
     path('container',views.container,name="container"),
-    path('listing',views.listing,name="listing"),
+    path("postele/<int:listing_id>",views.listing,name="listing"),
     path('category_listings',views.category_listings,name="category_listings"),
     # path('<int:listing_id>',views),
 ]

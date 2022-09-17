@@ -50,3 +50,34 @@
 .short-desc {
     font-style: italic;
 }
+
+.after-tabs {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.nav-tabs {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    
+    font-size: 1.1rem;
+}
+
+.nav-tabs button {
+    color: black;
+}
+
+.nav-tabs .nav-link:hover {
+    color: white;
+    background-color: black;
+}
+
+.nav-tabs .nav-link.active {
+    color: white;
+    background-color: black;
+}
+
+.product-desc {
+    padding-top: 50px;
+}
