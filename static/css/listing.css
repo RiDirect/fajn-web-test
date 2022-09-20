@@ -49,6 +49,7 @@
 
 .short-desc {
     font-style: italic;
+    padding-bottom: 50px;
 }
 
 .after-tabs {
@@ -80,4 +81,106 @@
 
 .product-desc {
     padding-top: 50px;
+}
+
+.product-desc h2 {
+    padding-bottom: 30px;
+}
+
+.product-cart-items {
+    margin-top: 5%;
+    padding-top: 30px;
+    border-top: 1px solid rgba(128, 128, 128, 0.301);
+}
+
+.etap {
+    padding-bottom: 30px;
+}
+
+.eta {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: black;
+    padding-bottom: 30px;
+}
+
+.eta1 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    font-style: italic;
+    color: green;
+}
+
+.eta-low {
+    font-size: 1.2rem;
+    font-weight: 500;
+    font-style: italic;
+    color: rgb(247, 182, 60);
+}
+
+.eta-high {
+    font-size: 1.2rem;
+    font-weight: 500;
+    font-style: italic;
+    color: rgb(254, 53, 53);
+}
+
+.cena {
+    padding-bottom: 30px;
+}
+
+.product-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+}
+
+.product-buttons i {
+    padding-right: 10px;
+    font-size: 1.2rem;
+}
+
+.cart-button {
+    width: 100%;
+    padding: 2%;
+    margin: 5px;
+    color: white;
+    background-color: black;
+    border: none;
+    
+}
+
+.cart-button:hover {
+    color: black;
+    background-color: white;
+}
+
+.splatky-hc {
+    font-size: 0.9rem;
+    width: 50%;
+    padding: 2%;
+    margin-left: 5px;
+    color: white;
+    background-color: rgb(233, 66, 66);
+    border: none;
+}
+
+.splatky-hc:hover {
+    color: rgb(233, 66, 66);
+    background-color: white;
+}
+
+.splatky-essox {
+    font-size: 0.9rem;
+    width: 45%;
+    padding: 2%;
+    margin-right: 5px;
+    border: none;
+    color: black;
+    background-color: white;
+}
+
+.splatky-essox:hover {
+    color: #DD4040;
 }

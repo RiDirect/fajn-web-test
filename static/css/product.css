@@ -118,14 +118,10 @@
     margin-top: 10px;
 }
 
-.product-container .product-card .contentBx .sklad .sklad-dyn {
-
-    color: green;
-}
-
-.product-container .product-card .contentBx .sklad span:hover {  /* other bug */
+/* .product-container .product-card .contentBx .sklad span:hover {  /* other bug *
     background: #B90000;
-}
+} 
+*/
 
 .product-container .product-card .contentBx .price .price-num {
 
@@ -153,3 +149,31 @@
     transform: translateY(0px);
     transition-delay: .3s;
 } 
+
+.eta {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: black;
+    padding-bottom: 30px;
+}
+
+.eta1 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    font-style: italic;
+    color: green;
+}
+
+.eta-low {
+    font-size: 1.1rem;
+    font-weight: 400;
+    font-style: italic;
+    color: rgb(247, 182, 60);
+}
+
+.eta-high {
+    font-size: 1.1rem;
+    font-weight: 400;
+    font-style: italic;
+    color: rgb(254, 53, 53);
+}

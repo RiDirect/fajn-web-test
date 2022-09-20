@@ -67,7 +67,7 @@ class Produkt(models.Model):
     main_category = models.ForeignKey(Main_Category,blank = True,null =True,related_name='mistnosti',on_delete=models.PROTECT)
     category = models.ForeignKey(Sub_Category,blank = True,null =True,related_name='category',on_delete=models.PROTECT)
     sub_category = models.ForeignKey(Sub_sub_Category,blank = True,null =True,related_name='subcategory',on_delete=models.PROTECT)
-    price = models.DecimalField(max_digits=8,decimal_places = 1)
+    price = models.FloatField()
     short_description= models.TextField(max_length=600)
     long_description = models.TextField(max_length=3000)
     primary_img = models.ImageField(upload_to=img_path, null=False, blank=False)

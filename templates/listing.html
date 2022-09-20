@@ -32,15 +32,24 @@
     <div class="product-tabs">
         <div class="product-att">
             <div><h1 class="product-name">{{listing.name}}</h1></div>
-            <div><p class="short-desc">{{listing.short_description}}</p></div>
-           
-            <div><p>{{listing.ean.brand_id}}-000{{listing.id}}/00{{listing.varianta.id}}</p></div>
-            {% if listing.id > 9 %}
-            <div><p>{{listing.ean.brand_id}}-00{{listing.id}}/00{{listing.varianta.id}}</p></div>
-            {%endif%}
-            {% if listing.id > 99 %}
-            <div><p>{{listing.ean.brand_id}}-0{{listing.id}}/00{{listing.varianta.id}}</p></div>
-            {%endif%}
+            <div><p class="short-desc">{{listing.short_description}}</p></div>         
+            <div class="product-cart-items">
+                {%if listing.eta == 1 %}
+                <div class="etap"><span class="eta">Dostupnost: </span><span class="eta1">SKLADEM</span></div>
+                {%endif%}
+                {%if listing.eta > 1 and listing.eta < 5 %}
+                <div class="etap"><span class="eta">Dostupnost: </span><span class="eta-low">dodání do {{listing.eta}} týdnů</span></div>
+                {%endif%}
+                {%if listing.eta > 4 %}
+                <div class="etap"><span class="eta">Dostupnost: </span><span class="eta-high">dodání do {{listing.eta}} týdnů</span></div>
+                {%endif%}
+                <div class="cena"><h2>{{listing.price}},- Kč</h2></div>
+                <div class="product-buttons">
+                    <button class="cart-button"><i class="bi bi-bag-plus"></i>Přidat do košíku</button>
+                    <button class="splatky-hc"><i class="bi bi-calculator"></i>HOMECREDIT kalkulačka</button>
+                    <button class="splatky-essox"><i class="bi bi-calculator"></i>ESSOX kalkulačka</button>
+                </div>
+            </div>
         </div>
         <div class="product-img">
             <div class="main-img">
@@ -66,11 +75,18 @@
               <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                     <div class="product-desc">
+                        <h2>{{listing.name}}</h2>
                         {{listing.long_description}}
                     </div>
                 </div>
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                    Profile
+                    <div><p>{{listing.ean.brand_id}}-000{{listing.id}}/00{{listing.varianta.id}}</p></div>
+                    {% if listing.id > 9 %}
+                    <div><p>{{listing.ean.brand_id}}-00{{listing.id}}/00{{listing.varianta.id}}</p></div>
+                    {%endif%}
+                    {% if listing.id > 99 %}
+                    <div><p>{{listing.ean.brand_id}}-0{{listing.id}}/00{{listing.varianta.id}}</p></div>
+                    {%endif%}
                 </div>
               </div>
     <script>
