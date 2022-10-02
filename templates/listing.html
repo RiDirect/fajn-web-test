@@ -1,4 +1,6 @@
 {%load static%}
+{%load space%}
+{%load humanize%}
 <!DOCTYPE html>
 <html lang="cz">
     <head>
@@ -43,9 +45,10 @@
                 {%if listing.eta > 4 %}
                 <div class="etap"><span class="eta">Dostupnost: </span><span class="eta-high">dodání do {{listing.eta}} týdnů</span></div>
                 {%endif%}
-                <div class="cena"><h2>{{listing.price}},- Kč</h2></div>
+                <div class="cena"><h2>{{listing.price|spaced_format}},- Kč</h2></div>
                 <div class="product-buttons">
                     <button class="cart-button"><i class="bi bi-bag-plus"></i>Přidat do košíku</button>
+                    <p class="financovani">Možnosti financování</p>
                     <button class="splatky-hc"><i class="bi bi-calculator"></i>HOMECREDIT kalkulačka</button>
                     <button class="splatky-essox"><i class="bi bi-calculator"></i>ESSOX kalkulačka</button>
                 </div>

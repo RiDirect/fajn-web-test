@@ -7,8 +7,10 @@ register = template.Library()
 def spaced_format(value):
     deleni = value / 1000
     zbytek = value % 1000
+    str_value = str(value)
     str_deleni = str(deleni)
-    str_zbytek = str(zbytek)
+    str_zbytek_ = str(zbytek)
+    str_zbytek = (str_zbytek_[:-1])
     if zbytek == 0:
         
         if value > 10000:
@@ -19,16 +21,44 @@ def spaced_format(value):
             return res
     else:
         if value > 9999:
-            str_deleni_1 = (str_deleni[:-1])
-            hodnota = str_deleni_1.replace("."," ") + str_zbytek
-            hodnota_without_dot = (hodnota[:-2])
-            return hodnota_without_dot
+            vysledek = None
+            podeleni = str_deleni.replace(".", " ")
+            if len(str_value) == 7 and str_value[-3]== "0" and str_value[-4] != "0":
+                vysledek=f"{podeleni}0"
+
+            if len(str_value) == 7 and str_value[-3]!= "0" and str_value[-4] != "0":
+                vysledek=f"{podeleni}"
+
+            if len(str_value) == 7 and str_value[-3]== "0" and str_value[-4] =="0":
+                vysledek=f"{podeleni}00"
+
+            if len(str_value) == 7 and str_value[-3]== "0" and str_value[-4] =="0"and str_value[-5] =="0":
+                vysledek=f"{podeleni}000"
+
+            if len(str_value) == 7 and str_value[-3]== "0" and str_value[-4] =="0"and str_value[-5] !="0":
+                vysledek=f"{podeleni}00"
+
+
+            return vysledek
         if value < 10000:
-            str_deleni_1 = (str_deleni[:-2])
-            hodnota = str_deleni_1+ " " + str_zbytek
-            hodnota_bez_dot = hodnota.replace(".", " ")
-            hodnota_without_dot = (hodnota_bez_dot[:-2])
-            return hodnota_without_dot
+            vysledek = None
+            podeleni = str_deleni.replace(".", " ")
+
+            if len(str_value) == 6 and str_value[-3]== "0" and str_value[-4] != "0":
+                vysledek=f"{podeleni}0"
+
+            if len(str_value) == 6 and str_value[-3]!= "0" and str_value[-4] != "0":
+                vysledek=f"{podeleni}"
+
+            if len(str_value) == 6 and str_value[-3]== "0" and str_value[-4] =="0":
+                vysledek=f"{podeleni}00"
+
+            if len(str_value) == 6 and str_value[-3]== "0" and str_value[-4] =="0"and str_value[-5] =="0":
+                vysledek=f"{podeleni}000"
+
+                
+
+            return vysledek
 
 register.filter("spaced_format",spaced_format)
 

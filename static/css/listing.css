@@ -184,3 +184,13 @@
 .splatky-essox:hover {
     color: #DD4040;
 }
+
+.financovani {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-top: 1px solid rgba(128, 128, 128, 0.301);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.301);
+}
