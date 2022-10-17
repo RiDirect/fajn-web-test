@@ -16,13 +16,15 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/listings.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/category-listings.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
+    <link rel="stylesheet" href="{%static 'css/footer.css'%}">
     <link rel="icon" type="image/png" href="{% static 'img/logo2.svg' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,300&display=swap"
         rel="stylesheet">
+    <script src="/static/js/bootstrap.min.js"></script>    
 
-    <title>{{listing.sub_category}}</title>
+    <title>{{listing.category}} {{listing.sub_category}}</title>
     {%endfor%}
     {%endif%}
 </head>
@@ -38,7 +40,7 @@
         <div class="category-header">
             <div class="category-header-columns">
                 <div class="category-title">
-                    <h1>{{listing.sub_category}} {{listing.sub_sub_category}}</h1>
+                    <h1>{{listing.category}}</h1>
                 </div>
                 <div class="category-sec-title">
                     Postel je základním kamenem každé ložnice. Pohodlnost a komfort jsou podstatné, ale neméně důležitý
@@ -46,14 +48,48 @@
                 </div>
             </div>
             <div class="cat-links">
-                <div class="card w-25">
-                    <div class="card-body">
-                        <h5 class="card-title">%Category%</h5>
-                        <a href="{%url 'listing' listing.id%}" class="btn btn-primary">Zobrazit</a>
-                    </div>
+                <div class="category-card">
+                    <a href="{% url 'calounene_postele'%}" class="card-link">
+                        <div class="cat-img">
+                            <img src="/media/Ložnice/Postele/čalouněné/monza1.jpg" class="cat-img-img" alt="...">
+                        </div>
+                            <div class="cat-content">
+                            <h5 class="mt-0">Postele {{listing.sub_category}}</h5>
+                        </div>
+                    </a>
                 </div>
+                <div class="category-card">
+                    <a href="{%url 'postele_z_masivu'%}" class="card-link">
+                        <div class="cat-img">
+                            <img src="/media/Ložnice/Postele/fdsa/sabrina1.jpg" class="cat-img-img" alt="...">
+                        </div>
+                            <div class="cat-content">
+                            <h5 class="mt-0">Postele z masivu</h5>
+                        </div>
+                    </a>
+                </div>
+                  <div class="category-card">
+                    <a href="# " class="card-link">
+                        <div class="cat-img">
+                            <img src="/media/Ložnice/Postele/čalouněné/monza1.jpg" class="cat-img-img" alt="...">
+                        </div>
+                            <div class="cat-content">
+                            <h5 class="mt-0">Postele {{listing.sub_category}}</h5>
+                        </div>
+                    </a>
+                  </div>
+                  <div class="category-card">
+                    <a href="#" class="card-link">
+                        <div class="cat-img">
+                            <img src="/media/Ložnice/Postele/čalouněné/monza1.jpg" class="cat-img-img" alt="...">
+                        </div>
+                            <div class="cat-content">
+                            <h5 class="mt-0">Postele {{listing.sub_category}}</h5>
+                        </div>
+                    </a>
+                  </div>
+                </div>  
             </div>
-        </div>
         {%endif%}
         {%endfor%}
         {%endif%}
@@ -71,7 +107,10 @@
             {%endfor%}
             {%endif%}
         </div>
-        </div>
+</div> 
+<footer>
+    {%include 'partials/footer.html'%}
+</footer>     
 </body>
 
 

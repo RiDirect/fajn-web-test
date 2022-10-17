@@ -31,7 +31,34 @@ def listing(request,listing_id):
     }
      return render(request,'listing.html',context)
 
-def category_listings(request):
+def listing_calounene_postele(request):
+     listings = models.Produkt.objects.all()
+
+     paginator = Paginator(listings,12)
+     page = request.GET.get('page')
+     paged_listings = paginator.get_page(page)
+     context = {
+               'listings': paged_listings,
+               
+
+     }
+     return render(request,'calounene_postele.html',context)
+
+def listing_postele_z_masivu(request):
+     listings = models.Produkt.objects.all()
+
+     paginator = Paginator(listings,12)
+     page = request.GET.get('page')
+     paged_listings = paginator.get_page(page)
+     context = {
+               'listings': paged_listings,
+               
+
+     }
+     return render(request,'postele_z_masivu.html',context)
+
+def category_listings(request):  
+
      listings = models.Produkt.objects.all()
 
      paginator = Paginator(listings,12)

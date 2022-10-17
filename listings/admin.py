@@ -24,7 +24,7 @@ class Listing_brand(admin.ModelAdmin):
 admin.site.register(Brand,Listing_brand)
 
 class Listing_sub_sub_category(admin.ModelAdmin):
-    list_display= ("main_category","name","description","sub_category")
+    list_display= ("id","name","main_category","description","sub_category")
     list_display_links=("main_category","name","description","sub_category")
 admin.site.register(Sub_sub_Category,Listing_sub_sub_category)
 
