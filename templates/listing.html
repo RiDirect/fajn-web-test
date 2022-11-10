@@ -59,10 +59,18 @@
                 <img src="{{ listing.primary_img.url}}" alt="{{listing.primary_alt}}">
             </div>
             <div class="alt-imgs">
+                {%if listing.img1%}
                 <img src="{{listing.img1.url}}" alt="%img_alt">
+                {%endif%}
+                {%if listing.img2%}
                 <img src="{{listing.img2.url}}" alt="%img_alt">
+                {%endif%}
+                {%if listing.img3%}
                 <img src="{{listing.img3.url}}" alt="%img_alt">
+                {%endif%}
+                {%if listing.img4%}
                 <img src="{{listing.img4.url}}" alt="%img_alt">
+                {%endif%}
             </div>
         </div>
         

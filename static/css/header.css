@@ -7,6 +7,7 @@ html,body
     padding: 0px;
     overflow-x: hidden; 
     font-family: 'Rubik', sans-serif;
+    -webkit-tap-highlight-color: transparent;
 }
 
 header {
@@ -84,49 +85,80 @@ header {
     clear: both;
 }
 
+.navbar .megamenu{ padding: 1rem; }
 
-/* Navbar CSS */
-@media screen and (min-width: 1200px) {
-.nav-item {
-    width: 25%;
-    text-align: center;
- }
+    /* ============ desktop view ============ */
+@media all and (min-width: 992px) {
+    
+.navbar .has-megamenu{position:static!important;}
+.navbar .megamenu{left:0; right:0; width:100%; margin-top:0;  }
+    }	
+    /* ============ desktop view .end// ============ */
+    
+    /* ============ mobile view ============ */
+    @media(max-width: 991px){
+      .navbar.fixed-top .navbar-collapse, .navbar.sticky-top .navbar-collapse{
+        overflow-y: auto;
+          max-height: 90vh;
+          margin-top:10px;
+      }
+    }
+
+.navbar {
+    margin-bottom: 100px;
 }
 
-@media screen and (max-width: 1200px) {
-    .nav-item {
-        width: 25%;
-        text-align: center;
-     }
-    }
-.navbar a {
-    color:white;
+.navbar-nav a {
+    color: white;
+    outline: none !important;
+}
+
+.navbar-expand-lg .navbar-collapse {
+    justify-content: center;
 }
 
 .navbar-nav a:hover {
     color: white;
-    background-color: #dd404000;
 }
 
-.navbar {
-    display: block;
-    padding: 0px 10px 0px 10px;
+.dropdown:hover .dropdown-menu {
+    display: flex;
+    margin-top: 0;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.megamenu-card a {
+    color: black;
+    text-decoration: none;
+}  
+
+.megamenu-card a:hover {
+    color: #DD4040;
+}  
+
+.header-category-card {
     width: 100%;
-    font-size: 1.2rem;
-    margin-bottom: 100px;
+    display: flex;
 }
 
-.dropdown-menu {
-    background-color: #DD4040;
-    margin-top: 10px;
-    margin-left: 25%;
-    border: none;
-    display: block;
-    visibility: hidden;
-    transition:all 0.1s ease-in-out;
+.header-category-card-small {
+    margin-left: 10px;
 }
 
-.nav-item:hover .dropdown-menu {
-    visibility: visible;
-    transition: 0s;
+.header-category-card-p {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 300px;
+    font-size: 0.8rem;
+}
+
+.header-category-card-p a {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.megamenu-card {
+    display: flex;
+    justify-items: auto;
 }

@@ -21,7 +21,9 @@ urlpatterns = [
     path('container',views.container,name="container"),
     path("postele/<int:listing_id>",views.listing,name="listing"),
     path('category_listings',views.category_listings,name="category_listings"),
-    path('calounene_postele',views.listing_calounene_postele,name="calounene_postele"),
-    path('postele_z_masivu',views.listing_postele_z_masivu,name="postele_z_masivu"),
+    path('loznice/calounene_postele',views.calounene_postele,name="calounene_postele"),
+    path('loznice/postele_z_masivu',views.postele_z_masivu,name="postele_z_masivu"),
+    path('loznice/postelove_ramy',views.postelove_ramy,name="postelove_ramy"),
+    path('loznice/valendy',views.valendy,name="valendy")
     # path('<int:listing_id>',views),
 ]

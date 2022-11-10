@@ -32,8 +32,8 @@ class Sub_sub_Category(models.Model):
     name = models.CharField(max_length=200)
     sub_category = models.ForeignKey(Sub_Category,blank=True,related_name='subcategory',on_delete=models.PROTECT)
     description = models.TextField(max_length=300)
-    img = models.ImageField(upload_to=img_path_sub_sub_category, null=False, blank=False)
-    img_alt = models.CharField(max_length=200)
+    img = models.ImageField(upload_to=img_path_sub_sub_category, null=True, blank=True)
+    img_alt = models.CharField(max_length=200,blank=True)
     def __str__(self):
         return self.name
 def img_path(instance, filename):

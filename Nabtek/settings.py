@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'listings',
     'rest_framework',
+    # 'django_filters',
+    # 'bootstrapform',
 
 
 ]
@@ -90,7 +92,16 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'cmofajn__2306',
+        'USER': 'cmofajn__2306',
+        'PASSWORD': 'FajnAdmin123+', 
+        'HOST': 'store5.rosti.cz',
+        'PORT': '3306',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
