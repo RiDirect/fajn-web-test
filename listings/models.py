@@ -64,6 +64,7 @@ class Produkt(models.Model):
     ean = models.ForeignKey(Brand,blank = True,null =True,related_name='ean',on_delete=models.PROTECT)
     varianta = models.ForeignKey(Variants,blank = True,null =True,related_name='varianta',on_delete=models.PROTECT)
     name = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True,blank=False,null=False)
     main_category = models.ForeignKey(Main_Category,blank = True,null =True,related_name='mistnosti',on_delete=models.PROTECT)
     category = models.ForeignKey(Sub_Category,blank = True,null =True,related_name='category',on_delete=models.PROTECT)
     sub_category = models.ForeignKey(Sub_sub_Category,blank = True,null =True,related_name='subcategory',on_delete=models.PROTECT)
@@ -83,7 +84,9 @@ class Produkt(models.Model):
     stock = models.IntegerField()
     brand = models.ForeignKey(Brand,blank = True,null =True,related_name='brand',on_delete=models.PROTECT)
     eta = models.IntegerField()
-
+    
+    def absolute_url(self):
+        return f"/{self.slug}/"
     # def admin_photo(self):
     #     return mark
     # def __str__(self):

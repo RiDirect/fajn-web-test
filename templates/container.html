@@ -6,7 +6,7 @@
     <div class="product-card">
         <div class="imgBx">
 
-            <a href="{% url 'listing' listing.id %}"><img src="{{ listing.primary_img.url }}" alt={{listing.short_description}}></a>
+            <a href="{{listing.id}}"><img src="{{ listing.primary_img.url }}" alt={{listing.short_description}}></a>
         </div>
 
         <div class="contentBx">
@@ -29,7 +29,7 @@
                 <h3>Cena: </h3>
                 <h3 class="price-num">{{listing.price|spaced_format}} Kč</h3>
             </div>
-            <a href="{% url 'listing' listing.id %}">Zobrazit</a>
+            <a href="{{listing.id}}">Zobrazit</a>
         </div>
 
     </div>

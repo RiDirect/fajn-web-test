@@ -1,18 +1,18 @@
 {%load static%}
 <div class="head">
-        <div class="tabs">
-          <div class="column">
+        <div class="row justify-content-center">
+          <div class="col-md-4">
               <div class="info_div">
                 <span><i class="bi bi-envelope-plus-fill"></i><a href="mailto:info@fajn-nabytek.cz" target="_blank">info@fajn-nabytek.cz</a></span>
                 <span><i class="bi bi-telephone"></i><a href="tel:+420704737272" target="_blank">+420 704 737 272</a></span>
               </div>
             </div>
-            <div class="column">
+            <div class="col-md-2">
               <div class="headimg">
                 <a href="https://fajn-nabytek.eu" alt="FAJN Nábytek"><img src="{% static 'img/logo2.svg' %}" width=80 height=60></a>
               </div>
             </div>
-            <div class="column">
+            <div class="col-md-4">
               <div class="searchbar_div">
                 <input type="text" placeholder="Hledat..">
               </div>
@@ -35,12 +35,11 @@
                   <div class="header-category-card">
                     <img src="/media/Obývací pokoj/Sedací soupravy/Karla_ss.jpg" width="130px" height="120px">
                     <div class="header-category-card-small">
-                    <a href="#"><h5>Sedací soupravy</h5></a>
+                    <a href="{%url 'sedaci_soupravy'%}"><h5>Sedací souprava</h5></a>
                     <div class="header-category-card-p">
-                      <a href="#"><p>rohové</p></a>
-                      <a href="#"><p>na každodenní spaní</p></a>
-                      <a href="#"><p>na každodenní spaní</p></a>
-                      <a href="#"><p>na každodenní spaní</p></a>
+                      <a href="{%url 'levne_sedaci_soupravy'%}"><p>Levné sedací soupravy</p></a>
+                      <a href="{%url 'rohove'%}"><p>Rohové</p></a>
+                      <a href="{%url 'kazdodenni_spanni'%}"><p>Na každodenní spaní</p></a>
                     </div>
                   </div>
                 </div>
@@ -50,16 +49,40 @@
                 <div class="header-category-card">
                   <img src="/media/Ložnice/Postele/čalouněné/sabrina1.jpg" width="130px" height="120px">
                   <div class="header-category-card-small">
-                  <a href="#"><h5>Obývací stěny</h5></a>
+                  <a href="{%url 'obyvaci_steny'%}"><h5>Obývací stěny</h5></a>
                     <div class="header-category-card-p">
-                    <a href="#"><p>rohové</p></a>
-                    <a href="#"><p>na každodenní spaní</p></a>
-                    <a href="#"><p>na každodenní spaní</p></a>
-                    <a href="#"><p>na každodenní spaní</p></a>
+                      <a href="{%url 'obkomody'%}"><p>Komody</p></a>
+                      <a href="{%url 'tv_stolky'%}"><p>TV Stolky</p></a>
                   </div>
                 </div>
               </div>
           </div>
+          <div class="megamenu-card">
+            <a href="#"></a>
+              <div class="header-category-card">
+                <img src="/media/Ložnice/Postele/čalouněné/sabrina1.jpg" width="130px" height="120px">
+                <div class="header-category-card-small">
+                <a href="{%url 'konferencni_stolky'%}"><h5>Konferenční stolky</h5></a>
+                  <div class="header-category-card-p">
+                   
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="megamenu-card">
+          <a href="#"></a>
+            <div class="header-category-card">
+              <img src="/media/Ložnice/Postele/čalouněné/sabrina1.jpg" width="130px" height="120px">
+              <div class="header-category-card-small">
+              <a href="{%url 'sakypaky'%}"><h5>©SakyPaky</h5></a>
+                <div class="header-category-card-p">
+                  
+              </div>
+            </div>
+          </div>
+      </div>
+          
+      
           </div> <!-- dropdown-mega-menu.// -->
         </li>
 
@@ -71,12 +94,13 @@
                   <div class="header-category-card">
                     <img src="/media/Ložnice/Postele/čalouněné/sabrina1.jpg" width="130px" height="120px">
                     <div class="header-category-card-small">
-                    <a href="https://fajn-nabytek.eu/category_listings"><h5>Postele</h5></a>
+                    <a href="{%url 'postele'%}"><h5>Postele</h5></a>
                     <div class="header-category-card-p">
-                      <a href="https://fajn-nabytek.eu/loznice/calounene_postele"><p>čalouněné</p></a>
-                      <a href="https://fajn-nabytek.eu/loznice/postele_z_masivu"><p>z masivu</p></a>
-                      <a href="https://fajn-nabytek.eu/loznice/valendy"><p>válendy</p></a>
-                      <a href="https://fajn-nabytek.eu/loznice/postelove_ramy"><p>postelové rámy</p></a>
+                      <a href="{%url 'calounene_postele'}"><p>čalouněné</p></a>
+                      <a href="{%url 'postele_z_masivu'%}"><p>z masivu</p></a>
+                      <a href="{%url 'valendy'%}"><p>válendy</p></a>
+                      <a href="{%url 'postelove_ramy'%}"><p>postelové rámy</p></a>
+                      <a href="{%url 'matrace'%}"><p>matrace</p></a>
                     </div>
                   </div>
                 </div>
@@ -86,16 +110,189 @@
                 <div class="header-category-card">
                   <img src="/media/Ložnice/Postele/čalouněné/sabrina1.jpg" width="130px" height="120px">
                   <div class="header-category-card-small">
-                  <a href="#"><h5>Obývací stěny</h5></a>
+                  <a href="{% url 'komody'%}"><h5>Komody</h5></a>
                     <div class="header-category-card-p">
-                    <a href="#"><p>rohové</p></a>
-                    <a href="#"><p>na každodenní spaní</p></a>
-                    <a href="#"><p>na každodenní spaní</p></a>
-                    <a href="#"><p>na každodenní spaní</p></a>
                   </div>
                 </div>
               </div>
           </div>
+          <div class="megamenu-card">
+            <a href="#"></a>
+              <div class="header-category-card">
+                <img src="/media/Ložnice/Postele/čalouněné/sabrina1.jpg" width="130px" height="120px">
+                <div class="header-category-card-small">
+                <a href="{% url 'skrine'%}"><h5>Skříně</h5></a>
+                  <div class="header-category-card-p">
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="megamenu-card">
+          <a href="#"></a>
+            <div class="header-category-card">
+              <img src="/media/Ložnice/Postele/čalouněné/sabrina1.jpg" width="130px" height="120px">
+              <div class="header-category-card-small">
+              <a href="{% url 'nocni_stolky'%}"><h5>Noční stolky</h5></a>
+                <div class="header-category-card-p">
+              </div>
+            </div>
+          </div>
+      </div>
+          </div> <!-- dropdown-mega-menu.// -->
+        </li>
+        <li class="nav-item dropdown has-megamenu">
+          <a class="nav-link dropdown-toggle" href="#">Kuchyně</a>
+            <div class="dropdown-menu megamenu" role="menu">
+              <div class="megamenu-card">
+                <a href="#"></a>
+                  <div class="header-category-card">
+                    <img src="/media/Ložnice/Postele/čalouněné/sabrina1.jpg" width="130px" height="120px">
+                    <div class="header-category-card-small">
+                    <a href="{%url 'kuchynske_linky'%}"><h5>Kuchyňské linky</h5></a>
+                    <div class="header-category-card-p">
+                      <a href="{%url 'blokove'%}"><p>Blokové</p></a>
+                      <a href="{%url 'na_miru'%}"><p>Na míru</p></a>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="megamenu-card">
+              <a href="#"></a>
+                <div class="header-category-card">
+                  <img src="/media/Ložnice/Postele/čalouněné/sabrina1.jpg" width="130px" height="120px">
+                  <div class="header-category-card-small">
+                  <a href="{% url 'jidelni_stolky_sety'%}"><h5>Jidelní stolky a sety</h5></a>
+                    <div class="header-category-card-p">
+                      <a href="{%url 'jidelni_zidle'%}"><p>Jidelní židle</p></a>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="megamenu-card">
+            <a href="#"></a>
+              <div class="header-category-card">
+                <img src="/media/Ložnice/Postele/čalouněné/sabrina1.jpg" width="130px" height="120px">
+                <div class="header-category-card-small">
+                <a href="{% url 'komody'%}"><h5>Spotřebiče</h5></a>
+                  <div class="header-category-card-p">
+                    <a href="{%url 'postele_z_masivu'%}"><p>Lednice</p></a>
+                    <a href="{%url 'postele_z_masivu'%}"><p>Trouby</p></a>
+                    <a href="{%url 'postele_z_masivu'%}"><p>Mikrovlné trouby</p></a>
+                    <a href="{%url 'postele_z_masivu'%}"><p>Myčky</p></a>
+                    <a href="{%url 'postele_z_masivu'%}"><p>Varné desky</p></a>
+                    <a href="{%url 'postele_z_masivu'%}"><p>Digestoře</p></a>
+                    <a href="{%url 'postele_z_masivu'%}"><p>Malé spotřebiče</p></a>
+
+
+
+
+
+
+                </div>
+              </div>
+            </div>
+        </div>
+
+          </div> <!-- dropdown-mega-menu.// -->
+        </li>
+        <li class="nav-item dropdown has-megamenu">
+          <a class="nav-link dropdown-toggle" href="#">Dětský pokoj</a>
+            <div class="dropdown-menu megamenu" role="menu">
+              <div class="megamenu-card">
+                <a href="#"></a>
+                  <div class="header-category-card">
+                    <img src="/media/Ložnice/Postele/čalouněné/sabrina1.jpg" width="130px" height="120px">
+                    <div class="header-category-card-small">
+                    <a href="{%url 'detsky_postele'%}"><h5>Postele</h5></a>
+                    <div class="header-category-card-p">
+                      <a href="{%url 'poschodi'%}"><p>Poschodí</p></a>
+                      <a href="{%url 'caloun'%}"><p>Čaloun</p></a>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="megamenu-card">
+              <a href="#"></a>
+                <div class="header-category-card">
+                  <img src="/media/Ložnice/Postele/čalouněné/sabrina1.jpg" width="130px" height="120px">
+                  <div class="header-category-card-small">
+                  <a href="{% url 'detsky_zidle'%}"><h5>Židle</h5></a>
+                    <div class="header-category-card-p">
+                      
+                  </div>
+                </div>
+              </div>
+              
+          </div>
+          <div class="megamenu-card">
+            <a href="#"></a>
+              <div class="header-category-card">
+                <img src="/media/Ložnice/Postele/čalouněné/sabrina1.jpg" width="130px" height="120px">
+                <div class="header-category-card-small">
+                <a href="{%url 'sestavy'%}"><h5>Sestavy</h5></a>
+                <div class="header-category-card-p">
+                  
+                </div>
+              </div>
+            </div>
+        </div>
+
+          </div> <!-- dropdown-mega-menu.// -->
+        </li>
+        <li class="nav-item dropdown has-megamenu">
+          <a class="nav-link dropdown-toggle" href="#">Ostatní</a>
+            <div class="dropdown-menu megamenu" role="menu">
+              <div class="megamenu-card">
+                <a href="#"></a>
+                  <div class="header-category-card">
+                    <img src="/media/Ložnice/Postele/čalouněné/sabrina1.jpg" width="130px" height="120px">
+                    <div class="header-category-card-small">
+                    <a href="{%url 'kancelare'%}"><h5>Kanceláře</h5></a>
+                    <div class="header-category-card-p">
+                      
+                      
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="megamenu-card">
+              <a href="#"></a>
+                <div class="header-category-card">
+                  <img src="/media/Ložnice/Postele/čalouněné/sabrina1.jpg" width="130px" height="120px">
+                  <div class="header-category-card-small">
+                  <a href="{% url 'predsine'%}"><h5>Předsíně</h5></a>
+                    <div class="header-category-card-p">
+                      
+                  </div>
+                </div>
+              </div>
+              
+          </div>
+          <div class="megamenu-card">
+            <a href="#"></a>
+              <div class="header-category-card">
+                <img src="/media/Ložnice/Postele/čalouněné/sabrina1.jpg" width="130px" height="120px">
+                <div class="header-category-card-small">
+                <a href="{%url 'ostatni_zidle'%}"><h5>Židle</h5></a>
+                <div class="header-category-card-p">
+                  
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="megamenu-card">
+          <a href="#"></a>
+            <div class="header-category-card">
+              <img src="/media/Ložnice/Postele/čalouněné/sabrina1.jpg" width="130px" height="120px">
+              <div class="header-category-card-small">
+              <a href="{%url 'regaly'%}"><h5>Regály</h5></a>
+              <div class="header-category-card-p">
+                
+              </div>
+            </div>
+          </div>
+      </div>
+
           </div> <!-- dropdown-mega-menu.// -->
         </li>
       </ul>
