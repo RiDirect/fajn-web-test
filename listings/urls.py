@@ -18,13 +18,16 @@ from django.urls import path,include
 from . import views
 urlpatterns = [
     path('',views.index,name="listings"),
-    path('listing/<int:listing_id>',views.listing,name="listing"),
     path('container',views.container,name="container"),
     path('postele',views.category_listings,name="postele"),
+    path('postele/<slug:slug>',views.postele_details,name="postele_details"),
     path('loznice/postele/calounene_postele',views.calounene_postele,name="calounene_postele"),
     path('loznice/postele/postele_z_masivu',views.postele_z_masivu,name="postele_z_masivu"),
+    path('loznice/postele/postele_z_masivu/<slug:slug>',views.postele_z_masivu_details,name="postele_z_masivu_details"),
     path('loznice/postele/postelove_ramy',views.postelove_ramy,name="postelove_ramy"),
+    path('loznice/postele/postelove_ramy/<slug:slug>',views.postelove_ramy_details,name="postelove_ramy_details"),
     path('loznice/valendy',views.valendy,name="valendy"),
+    path('loznice/valendy/<slug:slug>',views.valendy_details,name="valendy_details"),
     path('loznice/komody',views.komody,name="komody"),
     path('loznice/skrine',views.skrine,name="skrine"),
     path('loznice/nocni_stolky',views.nocní_stolky,name="nocni_stolky"),

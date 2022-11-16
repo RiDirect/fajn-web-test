@@ -28,7 +28,38 @@ def listing(request,listing_id):
 
     }
      return render(request,'listing.html',context)
+def postele_details(request,slug):
+     listing = models.Produkt.objects.get(slug=slug)
+     context = {
+            'listing': listing
+           
 
+    }
+     return render(request,'detail_view.html',context)
+def postele_z_masivu_details(request,slug):
+     listing = models.Produkt.objects.get(slug=slug)
+     context = {
+            'listing': listing
+           
+
+    }
+     return render(request,'detail_view.html',context)
+def postelove_ramy_details(request,slug):
+     listing = models.Produkt.objects.get(slug=slug)
+     context = {
+            'listing': listing
+           
+
+    }
+     return render(request,'detail_view.html',context)
+def valendy_details(request,slug):
+     listing = models.Produkt.objects.get(slug=slug)
+     context = {
+            'listing': listing
+           
+
+    }
+     return render(request,'detail_view.html',context)
 def sedaci_soupravy(request):
      listings = models.Produkt.objects.all()
      paginator = Paginator(listings,12)

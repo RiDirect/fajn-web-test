@@ -4,7 +4,6 @@ from django.utils.safestring import mark_safe
 
 
 
-
 class Main_Category(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField(max_length=300)
@@ -85,8 +84,7 @@ class Produkt(models.Model):
     brand = models.ForeignKey(Brand,blank = True,null =True,related_name='brand',on_delete=models.PROTECT)
     eta = models.IntegerField()
     
-    def absolute_url(self):
-        return f"/{self.slug}/"
+
     # def admin_photo(self):
     #     return mark
     # def __str__(self):

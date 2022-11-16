@@ -41,6 +41,10 @@ footer {
     
 }
 
+.odkaz-tab a:hover {
+    color: rgb(220, 182, 13);
+}
+
 .odkaz-tab button {
     background-color: white;
     border: none;
