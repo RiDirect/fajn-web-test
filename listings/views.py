@@ -781,6 +781,37 @@ def category_listings(request):
      }
      return render(request,'category_listings.html',context)
 
+
+
+
+
+
+#OUT OF PRODUCT VIEW, INTERNAL THINGS
+
+def dev_kancelare(request):
+
+     return render(request,'dev/dev-kancelare.html')
+
+def dev_kuchyne(request):
+
+     return render(request,'dev/dev-kuchyne.html')
+
+def dev_nabytek(request):
+
+     return render(request,'dev/dev-nabytek.html')
+
+def dev_spotrebice(request):
+
+     return render(request,'dev/dev-spotrebice.html')
+
+def dev_spotrebice(request):
+
+     return render(request,'dev/dev-spotrebice.html')
+
+def developerske_projekty(request):
+
+     return render(request,'dev/developerske-projekty.html')
+
 # def listing(request,listing_id):
 #         listing = models.Produkt.objects.get(pk=listing_id)
 
@@ -789,5 +820,3 @@ def category_listings(request):
 #         }
 
 #         return render(request, 'listing.html',context)
-        
-        
