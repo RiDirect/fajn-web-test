@@ -82,15 +82,11 @@ urlpatterns = [
     path('ostatni/regaly',views.regaly,name="regaly"),
     path('ostatni/regaly/<slug:slug>',views.regaly_details,name="regaly_details"),
     path('ostatni/zidle',views.ostatni_zidle,name="ostatni_zidle"),
-<<<<<<< HEAD
-    path('ostatni/zidle/<slug:slug>',views.ostatni_zidle_details,name="ostatni_zidle_details"),
-=======
     path("dev-kancelare",views.dev_kancelare,name="dev_kancelare"),
     path("dev-kuchyne",views.dev_kuchyne,name="dev_kuchyne"),
     path("dev-nabytek",views.dev_nabytek,name="dev_nabytek"),
     path("dev-spotrebice",views.dev_spotrebice,name="dev_spotrebice"),
     path("developerske-projekty",views.developerske_projekty,name="developerske_projekty"),
->>>>>>> 4ed96f6 (index urls update)
 
     
     
