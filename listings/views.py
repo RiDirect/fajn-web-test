@@ -5,6 +5,8 @@ from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 
 # listings = models.Produkt.objects.filter(typobjektu__name__startswith="Ča")
 # Create your views here.
+
+#TODO make filter to each one main category
 def index(request):
     
     return render(request,'index.html')
