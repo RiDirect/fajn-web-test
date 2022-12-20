@@ -26,7 +26,6 @@ SECRET_KEY = 'django-insecure-q)fit=6^g0s!3f3kr5y_6b%-t-wm(*r9676we*^s9c3u5gq87n
 DEBUG = True
 ALLOWED_HOSTS = ['fajn-nabytek.eu','www.fajn-nabytek.eu']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'listings',
     'rest_framework',
+    'cart',
+    'accounts'
     # 'django_filters',
     # 'bootstrapform',
 
@@ -77,6 +78,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Nabtek.wsgi.application'
 
+# AUTH_USER_MODEL = 'accounts.Account'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases

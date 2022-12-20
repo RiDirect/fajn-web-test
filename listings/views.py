@@ -10,10 +10,16 @@ from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 def index(request):
     
     return render(request,'index.html')
+def cart(request):
+     return render(request,'cart/cart.html')
 def container(request):
         
         
      return render(request,'container.html')
+def prodejny_vydejny(request):
+     return render(request,'dev/prodejny_vydejny.html')
+def zakladni_informace(request):
+     return render(request,'dev/zakladni_informace.html')
 def postele(request,slug):
      listing = models.Produkt.objects.all()
      context = {

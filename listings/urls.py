@@ -87,6 +87,9 @@ urlpatterns = [
     path("dev-nabytek",views.dev_nabytek,name="dev_nabytek"),
     path("dev-spotrebice",views.dev_spotrebice,name="dev_spotrebice"),
     path("developerske-projekty",views.developerske_projekty,name="developerske_projekty"),
+    path("cart",views.cart,name="cart"),
+    path("prodejny_vydejny",views.prodejny_vydejny,name="prodejny_vydejny"),
+    path("zakladni_informace",views.zakladni_informace,name="zakladni_informace"),
 
     
     

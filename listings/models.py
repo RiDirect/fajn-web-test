@@ -84,7 +84,8 @@ class Produkt(models.Model):
     brand = models.ForeignKey(Brand,blank = True,null =True,related_name='brand',on_delete=models.PROTECT)
     eta = models.IntegerField()
     
-
+    def __str__(self):
+        return f"Kategorie: {self.category}, Produkt: {self.name}"
     # def admin_photo(self):
     #     return mark
     # def __str__(self):
