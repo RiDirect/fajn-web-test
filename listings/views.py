@@ -11,7 +11,7 @@ def index(request):
     
     return render(request,'index.html')
 def cart(request):
-     return render(request,'cart/cart.html')
+     return render(request,'cart/test_cart.html')
 def container(request):
         
         
