@@ -27,8 +27,12 @@
     <header>
         {%include 'partials/header.html'%}
     </header>
-
+    </div>
     <div class="cart-body">
+        <div class="cart-body-left">
+            <div class="cart-name">
+                <h1>Košík</h1>
+            </div>
         <div class="cart-info">
             <div class="cart-card">
                 <div class="cart-img"><img src="/media/Ložnice/Postele/čalouněné/sabrina1.jpg"></div>
@@ -52,7 +56,7 @@
                 <div class="cart-img"><img src="/media/Ložnice/Postele/čalouněné/sabrina1.jpg"></div>
                 <div class="cart-product">
                     <div class="product-text">
-                        <h5>Název produktu</h5>
+                        <h5>Čalouněná postel ERYK</h5>
                         <p class="stock">Datum dodání: do 5 týdnů</p>
                     </div>
                     <div class="product-counter">
@@ -66,64 +70,55 @@
                     </div>
                 </div>
             </div>
-            <div class="cart-card">
-                <div class="cart-img"><img src="/media/Ložnice/Postele/čalouněné/sabrina1.jpg"></div>
-                <div class="cart-product">
-                    <div class="product-text">
-                        <h5>Název produktu</h5>
-                        <p class="stock">Datum dodání: do 5 týdnů</p>
-                    </div>
-                    <div class="product-counter">
-                        <span><button class="count">-</button></span>
-                        <p>1</p>
-                        <span><button class="count">+</button></span>
-                    </div>
-                    <div class="product-price">
-                        <h5>29.990,- Kč</h5>
-                        <span><button><i class="bi bi-x"></i></button></span>
-                    </div>
-                </div>
-            </div>
-            <div class="cart-card">
-                <div class="cart-img"><img src="/media/Ložnice/Postele/čalouněné/sabrina1.jpg"></div>
-                <div class="cart-product">
-                    <div class="product-text">
-                        <h5>Název produktu</h5>
-                        <p class="stock">Datum dodání: do 5 týdnů</p>
-                    </div>
-                    <div class="product-counter">
-                        <span><button class="count">-</button></span>
-                        <p>1</p>
-                        <span><button class="count">+</button></span>
-                    </div>
-                    <div class="product-price">
-                        <h5>29.990,- Kč</h5>
-                        <span><button><i class="bi bi-x"></i></button></span>
-                    </div>
-                </div>
-            </div>
-            <div class="cart-card">
-                <div class="cart-img"><img src="/media/Ložnice/Postele/čalouněné/sabrina1.jpg"></div>
-                <div class="cart-product">
-                    <div class="product-text">
-                        <h5>Název produktu</h5>
-                        <p class="stock">Datum dodání: do 5 týdnů</p>
-                    </div>
-                    <div class="product-counter">
-                        <span><button class="count">-</button></span>
-                        <p>1</p>
-                        <span><button class="count">+</button></span>
-                    </div>
-                    <div class="product-price">
-                        <h5>29.990,- Kč</h5>
-                        <span><button><i class="bi bi-x"></i></button></span>
-                    </div>
-                </div>
-            </div>
+        </div>
+    </div>
+    <div class="cart-body-right">
+        <div class="count-name">
+            <h1>Shrnutí a doprava</h1>
         </div>
         <div class="cart-count">
-
+            <div class="delivery">
+                <div class="delivery-name">
+                    <h6>Způsob dopravy</h6>
+                </div>
+                <div class="delivery-options">
+                       <span class="delivery-type"><input type="radio" name="delivery-opt">Osobní odběr na prodejně <span class="delivery-price" style="color: green;">ZDARMA</span></span>
+                       <span class="delivery-type"><input type="radio" name="delivery-opt">Doprava před dům <span class="delivery-price">+ 1 299 Kč</span></span>
+                       <span class="delivery-type"><input type="radio" name="delivery-opt">Doprava s výnosem <span class="delivery-price">+ 1 999 Kč</span></span>
+                </div>
+                <div class="final-count">
+                    <h6>Souhrn</h6>
+                    <div class="row">
+                        <div class="col-md-5" style="text-align: left;">
+                            <p>Doprava: </p>
+                        </div>
+                        <div class="col-md-5" style="text-align: right;">
+                            <p>1 299 Kč</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5" style="text-align: left;">
+                            <p>Košík: </p>
+                        </div>
+                        <div class="col-md-5" style="text-align: right;">
+                            <p>59 800 Kč</p>
+                        </div>
+                    </div>
+                    <div class="row overall">
+                        <div class="col-md-5" class="" style="text-align: left;">
+                            <h5>Celkem: </h5>
+                         </div>
+                         <div class="col-md-5" style="text-align: right;">
+                            <h5>61 099 Kč</h5>
+                        </div>
+                    </div>
+                    <div class="checkout-btn">
+                        <button>Přejít k pokladně</button>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
     </div>
     <footer>
         {%include 'partials/footer.html'%}

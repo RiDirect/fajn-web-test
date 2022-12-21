@@ -13,10 +13,14 @@
 
 .category-title {
     width: 40%;
+    background-color: black;
+    color: white;
+    padding: 10px 0px 10px 0px;
 }
 
 .category-sec-title {
     width: 60%;
+    padding: 10px 0px 10px 0px;
 }
 
 .filters-column {
