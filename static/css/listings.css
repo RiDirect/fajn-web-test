@@ -20,7 +20,8 @@
 
 .category-sec-title {
     width: 60%;
-    padding: 10px 0px 10px 0px;
+    padding: 10px 0px 10px 50px;
+    margin: auto;
 }
 
 .filters-column {

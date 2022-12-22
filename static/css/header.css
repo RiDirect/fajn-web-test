@@ -167,3 +167,26 @@ header {
     display: flex;
     justify-items: auto;
 }
+
+.cart-btn button {
+    background-color: transparent;
+    color: white;
+    padding: 5px;
+    outline: none;
+    border-style: none;
+    margin-right: 10px;
+}
+
+.cart-btn a {
+    text-decoration: none;
+    color: white;
+}
+
+.cart-btn a:hover {
+    color: black;
+}
+
+.cart-btn i {
+    padding-left: 10px;
+    padding-right: 10px;
+}

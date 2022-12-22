@@ -66,6 +66,7 @@
     align-items: center;
     width: 100%;
     padding-bottom: 20px;
+    padding-top: 30px;
 }
 
 .big-text-column {
@@ -158,4 +159,22 @@
 
 .under-text li a:hover {
     color: black;
+}
+
+.go-back button {
+    padding: 5px 50px 5px 50px;
+    background-color: #1b1818;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 300;
+    border: none;
+}
+
+.go-back button:hover {
+    background-color: rgb(220, 182, 13);
+    color: black;
+}
+
+.go-back i {
+    padding-right: 10px;
 }

@@ -157,6 +157,15 @@
     background-color: white;
 }
 
+.cart-button a {
+    text-decoration: none;
+    color: white;
+}
+
+.cart-button a:hover {
+    color: black;
+}
+
 .splatky-hc {
     font-size: 0.9rem;
     width: 50%;
