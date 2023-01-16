@@ -5,8 +5,8 @@ from . models import Main_Category,Sub_Category,Sub_sub_Category,Produkt,Variant
 
 class ListingProdukt(admin.ModelAdmin):
     
-    list_display = ("id","ean","name","price","main_category","category","stock","brand","eta","primary_img")
-    list_display_links=("ean","name","main_category","category","price")
+    list_display = ("id","ean","name","price","main_category","category","sub_category","stock","brand","eta","primary_img")
+    list_display_links=("ean","name","main_category","category","sub_category","price")
  
 admin.site.register(Produkt,ListingProdukt)
 

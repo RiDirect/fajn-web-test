@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse, get_object_or_404,redirect
 from . import models
 from listings import urls
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
@@ -10,784 +10,90 @@ from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 def index(request):
     
     return render(request,'index.html')
+
+
+def listings_view(request, main_category_slug=None,sub_category_slug=None,sub_sub_category_slug=None):
+     categories = None
+     main_categories = None
+     products = None
+     sub_categories = None
+     sub_filter= None
+     category_filter = None
+
+     if sub_sub_category_slug!= None:
+          categories = models.Sub_Category.objects.get(slug = sub_category_slug, main_category__slug=main_category_slug)
+          category_filter = models.Sub_sub_Category.objects.get(slug = sub_sub_category_slug)
+          main_categories = get_object_or_404(models.Main_Category, slug=main_category_slug)
+          sub_categories = models.Sub_sub_Category.objects.get(slug = sub_sub_category_slug)
+          products = models.Produkt.objects.filter(category=categories,main_category=main_categories,sub_category=sub_categories)
+          paginator = Paginator(products, 12)
+          page = request.GET.get('page')
+          paged_products = paginator.get_page(page)
+          product_count = products.count()
+     elif sub_category_slug != None:
+          categories = models.Sub_Category.objects.get(slug = sub_category_slug, main_category__slug=main_category_slug)
+          main_categories = get_object_or_404(models.Main_Category, slug=main_category_slug)
+          products = models.Produkt.objects.filter(category=categories,main_category=main_categories)
+          sub_filter = models.Sub_sub_Category.objects.filter(sub_category__slug=sub_category_slug)
+          paginator = Paginator(products, 12)
+          page = request.GET.get('page')
+          paged_products = paginator.get_page(page)
+          product_count = products.count()
+     else:
+          products = models.Produkt.objects.all().order_by('id')
+          paginator = Paginator(products, 13)
+          page = request.GET.get('page')
+          paged_products = paginator.get_page(page)
+          product_count = products.count()
+     context = {
+        'listings': paged_products,
+        'product_count': product_count,
+        'category': categories,
+        'category_filter':category_filter,
+        'sub_categories': sub_filter,
+    }
+     return render(request, 'listing_view.html', context)
+
+def product_detail(request, main_category_slug,sub_category_slug, product_slug,sub_sub_category_slug= None):
+     if sub_sub_category_slug != None:
+
+          single_product = models.Produkt.objects.get(main_category__slug=main_category_slug,category__slug=sub_category_slug,sub_category__slug=sub_sub_category_slug, slug=product_slug)
+     elif sub_category_slug != None:
+          single_product = models.Produkt.objects.get(main_category__slug=main_category_slug,category__slug=sub_category_slug,slug=product_slug)
+     context = {
+        'listing': single_product,
+     }
+     return render(request, 'detail_view.html', context) 
+def categories(request, main_category_slug=None,sub_category_slug=None):
+     categories = None
+     if sub_category_slug != None:
+          categories = models.Sub_Category.objects.get(main_category__slug=main_category_slug, slug=sub_category_slug)
+     context = {
+          "listings": categories
+     }
+     return render(request,"category/category_obyvaci_steny.html",context)
 def cart(request):
-     return render(request,'cart/test_cart.html')
+     return render(request,'cart/cart.html')
+def pokladna(request):
+     return render(request,'cart/checkout.html')
 def container(request):
         
         
      return render(request,'container.html')
+def search(request):
+     if 'keyword' in request.GET:
+          keyword = request.GET["keyword"]
+          if keyword:
+               products = models.Produkt.objects.filter(name__icontains=keyword)
+     context = {
+          'listings' :products
+     }
+     return render(request,'listing_view.html',context)
 def prodejny_vydejny(request):
      return render(request,'dev/prodejny_vydejny.html')
 def zakladni_informace(request):
      return render(request,'dev/zakladni_informace.html')
-def postele(request,slug):
-     listing = models.Produkt.objects.all()
-     context = {
-            'listing': listing
-           
 
-    }
-     return render(request,'listing.html',context)
-def listing(request,listing_id):
-     listing = models.Produkt.objects.get(id=listing_id)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'listing.html',context)
-def postele_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-def postele_z_masivu_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def calounene_postele_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-def postelove_ramy_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def skrine_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-def valendy_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def komody_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def nocni_stolky_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def matrace_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def sedaci_soupravy_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def rohove_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def levne_sedaci_soupravy_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def kazdodenni_spanni_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def obyvaci_steny_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def ob_komody_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def tv_stolky_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def konferencni_stolky_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def kuchynske_linky_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def blokove_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def na_miru_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def sakypaky_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def jidelni_stolky_sety_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def jidelni_zidle_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def detsky_postele_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def caloun_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-def poschodi_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def sestavy_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def detsky_zidle_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def kancelare_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def predsine_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def regaly_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def ostatni_zidle_details(request,slug):
-     listing = models.Produkt.objects.get(slug=slug)
-     context = {
-            'listing': listing
-           
-
-    }
-     return render(request,'detail_view.html',context)
-
-def sedaci_soupravy(request):
-     listings = models.Produkt.objects.all()
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name="sedaci_soupravy_details"
-     context = {
-               'listings': paged_listings,
-               "name":name
-               
-               
-
-     }
-     return render(request,'listing_view.html',context)
-
-def rohove(request):
-     listings = models.Produkt.objects.all()
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name="rohove_details"
-     context = {
-               'listings': paged_listings,
-               "name":name
-               
-               
-
-     }
-     return render(request,'listing_view.html',context)
-
-def levne_sedaci_soupravy(request):
-     listings = models.Produkt.objects.all()
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name="levne_sedaci_soupravy_details"
-     context = {
-               'listings': paged_listings,
-               "name":name
-               
-               
-
-     }
-     return render(request,'listing_view.html',context)
-
-
-def obyvaci_steny(request):
-     listings = models.Produkt.objects.all()
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name="obyvaci_steny_details"
-     context = {
-               'listings': paged_listings,
-               "name":name
-               
-               
-
-     }
-     return render(request,'listing_view.html',context)
-def ob_komody(request):
-     listings = models.Produkt.objects.all()
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name = "ob_komody_details"
-     context = {
-               'listings': paged_listings,
-               "name":name
-               
-               
-
-     }
-     return render(request,'listing_view.html',context)
-
-def tv_stolky(request):
-     listings = models.Produkt.objects.all()
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name="tv_stolky_details"
-     context = {
-               'listings': paged_listings,
-               "name":name
-               
-               
-
-     }
-     return render(request,'listing_view.html',context)
-def konferencni_stolky(request):
-     listings = models.Produkt.objects.all()
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name="konferencni_stolky_details"
-     context = {
-               'listings': paged_listings,
-               "name":name
-               
-               
-
-     }
-     return render(request,'listing_view.html',context)
-def kazdodenni_spanni(request):
-     listings = models.Produkt.objects.all()
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name = "kazdodenni_spanni_details"
-     context = {
-               'listings': paged_listings,
-               "name":name
-               
-
-     }
-     return render(request,'listing_view.html',context)
-
-def sakypaky(request):
-     listings = models.Produkt.objects.all()
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name="sakypaky_details"
-     context = {
-               'listings': paged_listings,
-               "name":name
-               
-               
-
-     }
-     return render(request,'listing_view.html',context)
-
-def kuchynske_linky(request):
-     listings = models.Produkt.objects.all()
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name = "kuchynske_linky_details"
-     context = {
-               'listings': paged_listings,
-               "name": name
-               
-               
-
-     }
-     return render(request,'listing_view.html',context)
-
-def blokove(request):
-     listings = models.Produkt.objects.all()
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name = "blokove_details"
-     context = {
-               'listings': paged_listings,
-               "name":name
-               
-               
-
-     }
-     return render(request,'listing_view.html',context)
-
-def na_miru(request):
-     listings = models.Produkt.objects.all()
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name = "na_miru_details"
-     context = {
-               'listings': paged_listings,
-               "name":name
-               
-               
-
-     }
-     return render(request,'listing_view.html',context)
-
-def jidelni_stolky_sety(request):
-     listings = models.Produkt.objects.all()
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name = "jidelni_stolky_sety_details"
-     context = {
-               'listings': paged_listings,
-               "name":name
-               
-               
-
-     }
-     return render(request,'listing_view.html',context)
-
-def jidelni_zidle(request):
-     listings = models.Produkt.objects.all()
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name = "jidelni_zidle_details"
-     context = {
-               'listings': paged_listings,
-               "name":name
-               
-
-     }
-     return render(request,'listing_view.html',context)
-def detsky_postele(request):
-     listings = models.Produkt.objects.all()
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name = "detsky_postele_details"
-     context = {
-               'listings': paged_listings,
-               "name":name
-               
-               
-
-     }
-     return render(request,'listing_view.html',context)
-
-def caloun(request):
-     listings = models.Produkt.objects.all()
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name = "caloun_details"
-     context = {
-               'listings': paged_listings,
-               "name":name
-               
-               
-
-     }
-     return render(request,'listing_view.html',context)
-
-def poschodi(request):
-     listings = models.Produkt.objects.all()
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name = "poschodi_details"
-     context = {
-               'listings': paged_listings,
-               "name":name
-               
-               
-
-     }
-     return render(request,'listing_view.html',context)
-
-def sestavy(request):
-     listings = models.Produkt.objects.all()
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name = "sestavy_details"
-     context = {
-               'listings': paged_listings,
-               "name":name
-               
-
-     }
-     return render(request,'listing_view.html',context)
-
-def detsky_zidle(request):
-     listings = models.Produkt.objects.all()
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name = "detsky_zidle_details"
-     context = {
-               'listings': paged_listings,
-               "name":name
-               
-               
-
-     }
-     return render(request,'listing_view.html',context)
-
-def kancelare(request):
-     listings = models.Produkt.objects.all()
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name = "kancelare_details"
-     context = {
-               'listings': paged_listings,
-               "name":name
-               
-               
-
-     }
-     return render(request,'listing_view.html',context)
-
-def predsine(request):
-     listings = models.Produkt.objects.all()
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name = "predsine_details"
-     context = {
-               'listings': paged_listings,
-               "name":name
-               
-               
-
-     }
-     return render(request,'listing_view.html',context)
-
-def regaly(request):
-     listings = models.Produkt.objects.all()
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name = "regaly_details"
-     context = {
-               'listings': paged_listings,
-               "name":name
-               
-               
-
-     }
-     return render(request,'listing_view.html',context)
-
-def ostatni_zidle(request):
-     listings = models.Produkt.objects.all()
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name = "ostatni_zidle_details"
-     context = {
-               'listings': paged_listings,
-               "name":name
-               
-               
-
-     }
-     return render(request,'listing_view.html',context)
-def calounene_postele(request):
-     listings = models.Produkt.objects.filter(sub_category__name__icontains="Čalouněné")
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name = "calounene_postele_details"
-     context = {
-               'listings': paged_listings,
-               "name" :name
-
-     }
-     return render(request,'listing_view.html',context)
-
-
-def postele_z_masivu(request):
-     listings = models.Produkt.objects.filter(sub_category__name__icontains="masivu")
-
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name = "postele_z_masivu_details"
-     context = {
-               'listings': paged_listings,
-               "name" : name
-               
-
-     }
-     return render(request,'listing_view.html',context)
-
-def valendy(request):
-     listings = models.Produkt.objects.filter(sub_category__name__icontains="Válend")
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name = "valendy_details"
-
-     context = {
-               'listings': paged_listings,
-               "name" : name
-
-     }
-     return render(request,'listing_view.html',context)
-
-def postelove_ramy(request):
-     listings = models.Produkt.objects.filter(sub_category__name="Postelové rámy")
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name = "postelove_ramy_details"
-     context = {
-               'listings': paged_listings,
-               "name":name
-               
-
-     }
-     return render(request,'listing_view.html',context)
-def komody(request):
-     listings = models.Produkt.objects.filter(category__name="Komody")
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name = "komody_details"
-     context = {
-               'listings': paged_listings,
-               "name":name,
-               
-               
-
-     }
-     return render(request,'listing_view.html',context)
-def skrine(request):
-     listings = models.Produkt.objects.filter(category__name="Skříně")
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name = "skrine_details"
-     context = {
-               'listings': paged_listings,
-               "name":name,
-               
-               
-
-     }
-     return render(request,'listing_view.html',context)
-
-def nocní_stolky(request):
-     listings = models.Produkt.objects.filter(category__name="Noční Stolky")
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name = "nocni_stolky_details"
-     context = {
-               'listings': paged_listings,
-               "name":name,
-               
-               
-
-     }
-     return render(request,'listing_view.html',context)
-def matrace(request):
-     listings = models.Produkt.objects.filter(category__name="Matrace")
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     name = "matrace_details"
-     context = {
-               'listings': paged_listings,
-               "name":name,
-               
-               
-
-     }
-     return render(request,'listing_view.html',context)
-def category_listings(request):  
-
-     listings = models.Produkt.objects.all()
-     types = models.Sub_sub_Category.objects.all()
-
-     paginator = Paginator(listings,12)
-     page = request.GET.get('page')
-     paged_listings = paginator.get_page(page)
-     context = {
-               'listings': paged_listings,
-               "types": types,
-               
-               
-
-     }
-     return render(request,'category_listings.html',context)
 
 
 
@@ -820,11 +126,4 @@ def developerske_projekty(request):
 
      return render(request,'dev/developerske-projekty.html')
 
-# def listing(request,listing_id):
-#         listing = models.Produkt.objects.get(pk=listing_id)
 
-#         context = {
-#                 "listing": listing
-#         }
-
-#         return render(request, 'listing.html',context)

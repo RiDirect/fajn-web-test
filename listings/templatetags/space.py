@@ -38,7 +38,40 @@ def spaced_format(value):
             if len(str_value) == 7 and str_value[-3]== "0" and str_value[-4] =="0"and str_value[-5] !="0":
                 vysledek=f"{podeleni}00"
 
+            if len(str_value) == 8 and str_value[-3]== "0" and str_value[-4] != "0":
+                vysledek=f"{podeleni}0"
 
+            if len(str_value) == 8 and str_value[-3]!= "0" and str_value[-4] != "0":
+                vysledek=f"{podeleni}"
+
+            if len(str_value) == 8 and str_value[-3]== "0" and str_value[-4] =="0":
+                vysledek=f"{podeleni}00"
+
+            if len(str_value) == 8 and str_value[-3]== "0" and str_value[-4] =="0"and str_value[-5] =="0":
+                vysledek=f"{podeleni}000"
+
+            if len(str_value) == 8 and str_value[-3]== "0" and str_value[-4] =="0"and str_value[-5] !="0":
+                vysledek=f"{podeleni}00"
+
+
+            
+            if len(str_value) == 9 and str_value[-3]== "0" and str_value[-4] != "0":
+                vysledek=f"{podeleni}0"
+
+            if len(str_value) == 9 and str_value[-3]!= "0" and str_value[-4] != "0":
+                vysledek=f"{podeleni}"
+
+            if len(str_value) == 9 and str_value[-3]== "0" and str_value[-4] =="0":
+                vysledek=f"{podeleni}00"
+
+            if len(str_value) == 9 and str_value[-3]== "0" and str_value[-4] =="0"and str_value[-5] =="0":
+                vysledek=f"{podeleni}000"
+
+            if len(str_value) == 9 and str_value[-3]== "0" and str_value[-4] =="0"and str_value[-5] !="0":
+                vysledek=f"{podeleni}00"
+
+
+            
             return vysledek
         if value < 10000:
             vysledek = None
@@ -62,3 +95,9 @@ def spaced_format(value):
 
 register.filter("spaced_format",spaced_format)
 
+def spaced_format_total(value):
+    deleni = value / 1000
+    str_value = str(deleni)
+    str_value_after = str_value.replace('.',' ')
+    return f"{str_value_after}00"
+register.filter("spaced_format_total",spaced_format_total)

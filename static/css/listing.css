@@ -152,18 +152,20 @@
     
 }
 
-.cart-button:hover {
+.cart-button button {
+    border: none;
+    background-color: inherit;
+    color: inherit;
+}
+
+.product-buttons a.cart-button:hover {
     color: black;
     background-color: white;
 }
 
-.cart-button a {
+.product-buttons a.cart-button {
     text-decoration: none;
     color: white;
-}
-
-.cart-button a:hover {
-    color: black;
 }
 
 .splatky-hc {

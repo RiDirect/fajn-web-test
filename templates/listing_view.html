@@ -17,6 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" type="text/css" href="{% static 'css/listings.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/category-listings.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
     <link rel="icon" type="image/png" href="{% static 'img/logo2.svg' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,28 +35,44 @@
 <header>
     {%include 'partials/header.html'%}
 </header>
-    {%if listings%}
-    {%for listing in listings%}
-    {% if forloop.revcounter < 2 %} 
+
     <div class="cat-body">
         <div class="category-header">
             <div class="category-header-columns">
                 <div class="category-title">
-                    {%if listing.sub_category%}
-                    <h1>{{listing.sub_category}}</h1>
+                    {%if category_filter%}
+                    <h1>{{category_filter.name}}</h1>
                     {%else%}
-                    <h1>{{listing.category}}</h1>
+                    <h1>{{category.name}}</h1>
                     {%endif%}
                 </div>
                 <div class="category-sec-title">
-                    
-                    {{listing.long_description}}
+                    {%if category_filter%}
+                    {{category_filter.description}}
+                    {%else%}
+                    {{category.description}}
+                    {%endif%}
                 </div>
             </div>
-        </div>
-        {%endif%}
-        {%endfor%}
-        {%endif%}
+            <div class="cat-links">
+                {%for cat in sub_categories%}
+                <div class="category-card">
+                    <a href="{{cat.get_url2}}" class="card-link">
+                        <div class="cat-img">
+                            {%if cat.img%}
+                            <img src="{{cat.img.url}}" class="cat-img-img" alt="...">
+                            {%endif%}
+                        </div>
+                            <div class="cat-content">
+                            <h5 class="mt-0">{{cat.name}}</h5>
+                        </div>
+                    </a>
+                </div>
+                {%endfor%}
+                </div>
+             
+            </div>
+
         <div class="filters-column">
             <div>
                 <h2>Filtry</h2>
@@ -66,8 +83,11 @@
             <div class="product-container">
                 <div class="product-card">
                     <div class="imgBx">
-            
-                        <a href="{%url name listing.slug%}"><img src="{{ listing.primary_img.url }}" alt={{listing.short_description}}></a>
+                        {%if listing.sub_category%}
+                        <a href="{{listing.get_url}}"><img src="{{ listing.primary_img.url }}" alt={{listing.short_description}}></a>
+                        {%else%}
+                        <a href="{{listing.get_url_without}}"><img src="{{ listing.primary_img.url }}" alt={{listing.short_description}}></a>
+                        {%endif%}
                     </div>
             
                     <div class="contentBx">
@@ -90,7 +110,11 @@
                             <h3>Cena: </h3>
                             <h3 class="price-num">{{listing.price|spaced_format}} Kč</h3>
                         </div>
-                        <a href="{%url name listing.slug%}">Zobrazit</a>
+                        {%if listing.sub_category%}
+                        <a href="{{listing.get_url}}">Zobrazit</a>
+                        {%else%}
+                        <a href="{{listing.get_url_without}}">Zobrazit</a>
+                        {%endif%}
                     </div>
             
                 </div>

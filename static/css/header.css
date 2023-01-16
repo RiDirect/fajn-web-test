@@ -123,8 +123,10 @@ header {
 }
 
 .navbar-nav a:hover {
-    color: white;
+    color: black;
 }
+
+
 
 .dropdown:hover .dropdown-menu {
     display: flex;

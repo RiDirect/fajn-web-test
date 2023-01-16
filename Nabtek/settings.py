@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-q)fit=6^g0s!3f3kr5y_6b%-t-wm(*r9676we*^s9c3u5gq87n
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['fajn-nabytek.eu','www.fajn-nabytek.eu','www.prefix.fajn-nabytek.eu','*']
+ALLOWED_HOSTS = ['fajn-nabytek.eu','www.fajn-nabytek.eu','www.prefix.fajn-nabytek.eu','www.dev.fajn-nabytek.eu','fajn-nabytek.cz']
 
 # Application definition
 
@@ -46,6 +46,33 @@ INSTALLED_APPS = [
 
 ]
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'logging.txt',
+        },
+    },
+    'loggers': {
+        'django': {  # Logger for Django framework code
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'cart': {  # Specific logger for your app
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        '': {  # Catch-all root logger
+            'handlers': ['file'],
+            'level': 'ERROR',
+        },
+    },
+}
 
 MIDDLEWARE = [
     
@@ -71,6 +98,20 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.total_count',
+                'listings.context_processors.sedaci_soupravy_links',
+                'listings.context_processors.obyvaci_steny_links',
+                'listings.context_processors.postele_links',
+                'listings.context_processors.kuchynske_linky_links',
+                'listings.context_processors.jidelni_stolky_links',
+                'listings.context_processors.obyvaci_pokoj',
+                'listings.context_processors.ob_links',
+                'listings.context_processors.loznice',
+                'listings.context_processors.spotrebice_links',
+                'listings.context_processors.kuchyne',
+                'listings.context_processors.detsky_pokoj',
+                'listings.context_processors.postele',
+                'listings.context_processors.ostatni',
             ],
         },
     },

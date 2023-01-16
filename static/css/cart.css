@@ -10,7 +10,7 @@ html,body
 }
 
 .cart-body {
-    min-height: 47vh;
+    min-height: 60vh;
     margin-top: 20px;
     display: flex;
     padding-left: 100px;
@@ -148,8 +148,13 @@ html,body
     font-size: 1.2rem;
 }
 
-.product-price i:hover {
+.product-price a:hover {
     color: red;
+}
+
+.product-price a {
+    text-decoration: none;
+    color: black;
 }
 
 .product-price button {
@@ -171,24 +176,43 @@ html,body
     text-align: center;
     border-bottom: solid rgba(128, 128, 128, 0.301) 1px;
     padding-top: 10px;
+    margin-bottom: 10px;
 }
 
-.delivery-options {
-    padding-top: 20px;
-    margin-left: calc(20% - 2em);
+.del {
+    padding-top: 10px;
 }
 
-.delivery-options .delivery-type {
+.delivery-type {
     display: block;
     text-align: left;
     padding-bottom: 20px;
     padding-left: 20px;
+    /* margin-left: calc(20% - 2em); */
 }
 
-.delivery-options input {
+.delivery-type input {
     margin-right: 10px;
     accent-color: #DD4040;
 }
+
+.delivery-button {
+    width: 100%;
+    background-color: black;
+    color: white;
+    outline: none;
+    border-style: none;
+    padding-top: 10px;
+    padding-bottom: 10px; 
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.delivery-button:hover {
+    background-color: #DD4040;
+    color: white;
+}
+
 
 .final-count .row {
     --bs-gutter-x: 0;
@@ -224,6 +248,26 @@ html,body
     padding-bottom: 10px;
     margin-bottom: 10px;
     font-size: 1.2rem;
+}
+
+.checkout-btn-unchecked {
+    padding-top: 10px;
+}
+
+.checkout-btn-unchecked button {
+    width: 100%;
+    background-color: rgb(96, 96, 96);
+    color: white;
+    outline: none;
+    border-style: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.checkout-btn-unchecked button:hover {
+    cursor:no-drop;
 }
 
 .checkout-btn button:hover {

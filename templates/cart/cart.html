@@ -33,44 +33,28 @@
             <div class="cart-name">
                 <h1>Košík</h1>
             </div>
+        {%for cart_item in cart_items %}
         <div class="cart-info">
             <div class="cart-card">
-                <div class="cart-img"><img src="/media/Ložnice/Postele/čalouněné/sabrina1.jpg"></div>
+                <div class="cart-img"><img src="{{cart_item.product.primary_img.url}}"></div>
                 <div class="cart-product">
                     <div class="product-text">
-                        <h5>Název produktu</h5>
-                        <p class="stock">Datum dodání: do 5 týdnů</p>
+                        <h5>{{cart_item.product.name}}</h5>
+                        <p class="stock">Datum dodání: do {{cart_item.product.eta}} týdnů</p>
                     </div>
                     <div class="product-counter">
-                        <span><button class="count">-</button></span>
-                        <p>1</p>
-                        <span><button class="count">+</button></span>
+                        <span><a href="{%url 'remove_cart' cart_item.product.id%}"><button class="count">-</button></a></span>
+                        <p>{{cart_item.quantity}}</p>
+                        <span><a href="{%url 'add_cart' cart_item.product.id%}"><button class="count">+</button></a></span>
                     </div>
                     <div class="product-price">
-                        <h5>29.990,- Kč</h5>
-                        <span><button><i class="bi bi-x"></i></button></span>
-                    </div>
-                </div>
-            </div>
-            <div class="cart-card">
-                <div class="cart-img"><img src="/media/Ložnice/Postele/čalouněné/sabrina1.jpg"></div>
-                <div class="cart-product">
-                    <div class="product-text">
-                        <h5>Čalouněná postel ERYK</h5>
-                        <p class="stock">Datum dodání: do 5 týdnů</p>
-                    </div>
-                    <div class="product-counter">
-                        <span><button class="count">-</button></span>
-                        <p>1</p>
-                        <span><button class="count">+</button></span>
-                    </div>
-                    <div class="product-price">
-                        <h5>29.990,- Kč</h5>
-                        <span><button><i class="bi bi-x"></i></button></span>
+                        <h5>{{cart_item.line_total|spaced_format}},- Kč</h5>
+                        <span><a href="{%url 'remove_product' cart_item.product.id%}"><button><i class="bi bi-x"></i></a></button></span>
                     </div>
                 </div>
             </div>
         </div>
+        {%endfor%}
     </div>
     <div class="cart-body-right">
         <div class="count-name">
@@ -81,11 +65,15 @@
                 <div class="delivery-name">
                     <h6>Způsob dopravy</h6>
                 </div>
-                <div class="delivery-options">
-                       <label class="delivery-type"><input type="radio" name="delivery-opt">Osobní odběr na prodejně <span class="delivery-price" style="color: green;">ZDARMA</span></label>
-                       <label class="delivery-type"><input type="radio" name="delivery-opt">Doprava bez výnosu <span class="delivery-price">+ 1 299 Kč</span></label>
-                       <label class="delivery-type"><input type="radio" name="delivery-opt">Doprava s výnosem <span class="delivery-price">+ 1 999 Kč</span></label>
+                <div class="del">
+                <form action="" method="post">
+                {% csrf_token %}
+                    <label class="delivery-type"><input type="radio" name="delivery_opt" value="opt1">Osobní odběr na prodejně <span class="delivery-price" style="color: green;">ZDARMA</span></label>
+                    <label class="delivery-type"><input type="radio" name="delivery_opt" value="opt2">Doprava bez výnosu <span class="delivery-price">+ 1 299 Kč</span></label>
+                    <label class="delivery-type"><input type="radio" name="delivery_opt" value="opt3">Doprava s výnosem <span class="delivery-price">+ 1 999 Kč</span></label>
+                </form>
                 </div>
+                <a><button class="delivery-button">Zvolit dopravu</button></a>
                 <div class="final-count">
                     <h6>Souhrn</h6>
                     <div class="row">
@@ -93,27 +81,44 @@
                             <p>Doprava: </p>
                         </div>
                         <div class="col-md-5" style="text-align: right;">
-                            <p>1 299 Kč</p>
+                            <p>{{delivery_price}} Kč</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-5" style="text-align: left;">
                             <p>Košík: </p>
                         </div>
+                        {% if total_count < 1 %}
                         <div class="col-md-5" style="text-align: right;">
-                            <p>59 800 Kč</p>
+                            <p>{{total_count}} Kč</p>
                         </div>
+                        {%endif%}
+                        {% if total_count > 1%}
+                        <div class="col-md-5" style="text-align: right;">
+                            <p>{{total_count|spaced_format}} Kč</p>
+                        </div>
+                        {%endif%}
                     </div>
                     <div class="row overall">
                         <div class="col-md-5" class="" style="text-align: left;">
                             <h5>Celkem: </h5>
                          </div>
+                         {% if total_count > 1 %}
                          <div class="col-md-5" style="text-align: right;">
-                            <h5>61 099 Kč</h5>
+                            <h5>{{total|spaced_format}} Kč</h5>
                         </div>
+                        {%endif%}
+                        {% if total_count < 1 %}
+                         <div class="col-md-5" style="text-align: right;">
+                            <h5>{{total}} Kč</h5>
+                        </div>
+                        {%endif%}
+                    </div>
+                    <div class="checkout-btn-unchecked">
+                        <button>Zvolte způsob dopravy</button>
                     </div>
                     <div class="checkout-btn">
-                        <button>Přejít k pokladně</button>
+                        <a href=https://fajn-nabytek.eu/pokladna><button>Přejít k pokladně</button></a>
                     </div>
                 </div>
             </div>
