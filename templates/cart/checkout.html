@@ -25,10 +25,10 @@
     <title>Pokladna | FAJN Nábytek</title>
 </head>
 <body>
+<div id="page-wrap">
     <header>
         {%include 'partials/header.html'%}
     </header>
-    </div>
     <div class="cart-body">
         <div class="cart-body-left">
             <div class="cart-name">
@@ -38,22 +38,59 @@
             <div class="cart-card">
                 <div class="checkout-form">
                     <div class="row">
-                        <div class="col-lg-6">
-                            <form>
-                                    <label>Křestní jméno: <input type="text"></label>
-                                    <label>Příjmení: <input type="text"></label> 
-                                    <label>Email: <input type="text"></label>
-                                    <label>Telefon: <input type="text"></label>  
-                            </form>
-                        </div>
-                        <div class="col-lg-6">
-                            <form>
-                                    <label>Křestní jméno: <input type="text"></label>
-                                    <label>Příjmení: <input type="text"></label> 
-                                    <label>Email: <input type="text"></label>
-                                    <label>Telefon: <input type="text"></label>  
-                            </form>
-                        </div>
+                        <form>
+                            <h6>Kontaktní údaje</h6>
+                            <label>Jméno<span class="required">*</span><input type="text" required></label>
+                            <label>Příjmení<span class="required">*</span><input type="text" required></label>
+                            <label style="width: 60%;">Email<span class="required">*</span><input type="email" required></label>
+                            <label style="width: 40%;">Telefon<span class="required">*</span><input type="text" required></label>
+                            <label for="chk" style="flex-wrap: nowrap;width: 100%;">Nákup na firmu<input id="chk" type="checkbox" style="width: 3%;margin-left: 20px;"></label>
+                            <div id="ico" style="display: none;">
+                                <label style="width: 33.3%;">Název společnosti<span class="required">*</span><input type="email" required></label>
+                                <label style="width: 33.3%;">IČO<span class="required">*</span><input type="text" required></label>
+                                <label style="width: 33.3%;">DIČ<input type="text"></label>
+                            </div>
+                            <h6>Adresa dodání</h6>
+                            <label>Ulice a č.p.<span class="required">*</span><input type="text" required></label>
+                            <label>Obec<span class="required">*</span><input type="text" required></label>
+                            <label>PSČ<span class="required">*</span><input type="text" required></label>
+                            <label>Stát<span class="required">*</span>
+                                <select name="states" class="state-select" required>
+                                    <option value="Česká republika">Česká republika</option>
+                                    <option value="Slovensko">Slovensko</option>
+                                  </select>
+                            </label>
+                            <label for="chk2" style="flex-wrap: nowrap;width: 100%;">Doplnit fakturační údaje<input id="chk2" type="checkbox" style="width: 3%;margin-left: 20px;"></label>
+                            <div id="dph" style="display: none;">
+                                <label>Ulice a č.p.<span class="required">*</span><input type="text" required></label>
+                                <label>Obec<span class="required">*</span><input type="text" required></label>
+                                <label>PSČ<span class="required">*</span><input type="text" required></label>
+                                <label>Stát<span class="required">*</span>
+                                    <select name="states" class="state-select" required>
+                                        <option value="Česká republika">Česká republika</option>
+                                    </select>
+                            </div>
+                            <script>
+                                $(function () {
+                                    $("#chk").click(function () {
+                                        if ($(this).is(":checked")) {
+                                            $("#ico").show();
+                                        } else {
+                                            $("#ico").hide();
+                                        }
+                                    });
+                                });
+                                $(function () {
+                                    $("#chk2").click(function () {
+                                        if ($(this).is(":checked")) {
+                                            $("#dph").show();
+                                        } else {
+                                            $("#dph").hide();
+                                        }
+                                    });
+                                });
+                            </script>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -141,4 +178,5 @@
     <footer>
         {%include 'partials/footer.html'%}
     </footer>
+</div>
 </body>

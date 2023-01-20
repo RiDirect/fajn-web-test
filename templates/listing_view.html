@@ -32,10 +32,10 @@
 </head>
 
 <body>
-<header>
-    {%include 'partials/header.html'%}
-</header>
-
+<div id="page-wrap">
+    <header>
+        {%include 'partials/header.html'%}
+    </header>
     <div class="cat-body">
         <div class="category-header">
             <div class="category-header-columns">
@@ -72,15 +72,17 @@
                 </div>
              
             </div>
-
-        <div class="filters-column">
-            <div>
+    <div class="listings-view">
+        <div class="row">
+        <div class="col-lg-3">
+            <div class="filters">
                 <h2>Filtry</h2>
             </div>
         </div>
-        <div class="product-listings">
-            {%for listing in listings%}
+        <div class="col-lg-9">
+            <div class="products-list">
             <div class="product-container">
+                {%for listing in listings%}
                 <div class="product-card">
                     <div class="imgBx">
                         {%if listing.sub_category%}
@@ -115,15 +117,19 @@
                         {%else%}
                         <a href="{{listing.get_url_without}}">Zobrazit</a>
                         {%endif%}
-                    </div>
             
                 </div>
             </div>
             {%endfor%}
+            </div>
         </div>
+        </div>
+        </div>
+    </div>
     </div>
 <footer>
     {%include 'partials/footer.html'%}
 </footer>
+</div>
 </body>
 </html>

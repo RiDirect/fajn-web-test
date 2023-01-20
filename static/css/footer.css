@@ -5,6 +5,7 @@ footer {
     clear: both;
     width: 100%;
     margin-top: 100px;
+    position: absolute;
 }
 
 .columns {
@@ -83,4 +84,13 @@ footer {
 
 .info-tab a:hover {
     color: black;
+}
+
+@media screen and (max-width: 900px) {
+    .info-tab {
+        display: none;
+    }
+    .odkaz-tab {
+        width: 50%;
+    }
 }

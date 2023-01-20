@@ -10,11 +10,11 @@ html,body
 }
 
 .cart-body {
-    min-height: 60vh;
     margin-top: 20px;
     display: flex;
     padding-left: 100px;
     padding-right: 100px;
+    padding-bottom: 200px;
 }
 
 @media screen and (max-width: 1299px)
@@ -299,5 +299,23 @@ html,body
     }
     .final-count .col-md-5 {
         width: 50%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .cart-product {
+        display: block;
+    }
+    .product-text{
+        width: 100%;
+        text-align: center;
+    }
+    .product-counter {
+        width: 100%;
+        justify-content: center;
+    }
+    .product-price {
+        width: 100%;
+        justify-content: center;
     }
 }

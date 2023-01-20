@@ -10,11 +10,11 @@ html,body
 }
 
 .cart-body {
-    min-height: 60vh;
     margin-top: 20px;
     display: flex;
     padding-left: 100px;
     padding-right: 100px;
+    padding-bottom: 200px;
 }
 
 @media screen and (max-width: 1299px)
@@ -268,14 +268,14 @@ html,body
     font-size: 1.4rem;
 }
 
-.checkout-form input[type=text] {
+.checkout-form input {
     text-align: center;
     color: black;
     border:none;
     border-bottom: solid black 1px;
 }
 
-.checkout-form input[type=text]:focus {
+.checkout-form input:focus {
     outline: none;
     border: none;
     border-bottom: solid #DD4040 1px;
@@ -287,10 +287,59 @@ html,body
 }
 
 .checkout-form form {
-    display: flex;
-    justify-content: space-evenly;
     margin-bottom: 30px;
-    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.checkout-form h6 {
+    width: 100%;
+    margin: 20px 0px 20px 0px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: 400;
+}
+
+.checkout-form label {
+    padding-bottom: 30px;
+    display: flex;
+    width: 50%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.checkout-form label input {
+    width: 90%;
+}
+
+.checkout-form .required {
+    color: red;
+}
+
+.checkout-form div#ico {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.checkout-form select {
+    width: 100%;
+}
+
+.checkout-form div#dph {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.checkout-form input[type="checkbox"] {
+    accent-color: #dd4040;
 }
 
 @media screen and (max-width: 1150px) 
@@ -318,6 +367,9 @@ html,body
     .final-count .col-md-5 {
         width: 50%;
     }
+    .checkout-form form {
+        display: block;
+    }
 }
 
 @media screen and (max-width: 520px) {
@@ -326,5 +378,13 @@ html,body
     }
     .checkout-form label {
         margin: 15px 0px 15px 0px;
+        width: 100% !important;
+        vertical-align: middle;
+    }
+    .checkout-form div#ico {
+        width: 100%;
+    }
+    .checkout-form div#dph {
+        width: 100%;
     }
 }

@@ -16,6 +16,11 @@ html,body
     -webkit-tap-highlight-color: transparent;
 }
 
+#page-wrap {
+    min-height: 100vh;
+    position: relative;
+}
+
 header {
     background-color: #DD4040;
 }

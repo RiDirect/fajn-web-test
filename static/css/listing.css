@@ -1,7 +1,7 @@
 .single-body {
-    min-height: 64vh;
-    padding-left: 150px;
-    padding-right: 150px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 200px;
 }
 
 .product-tabs {
@@ -205,4 +205,25 @@
     padding-bottom: 5px;
     border-top: 1px solid rgba(128, 128, 128, 0.301);
     border-bottom: 1px solid rgba(128, 128, 128, 0.301);
+}
+
+@media screen and (min-width: 768px) and (max-width: 999px) {
+    .product-att{
+        margin-left: 0;  
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .product-tabs {
+        flex-direction: column-reverse;
+    }
+    .product-att {
+        margin-top: 20px;
+        width: 100%;
+        margin-left: 0;
+    }
+    .product-img {
+        width: 100%;
+        padding-left: 0;
+    }
 }

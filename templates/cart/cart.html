@@ -24,10 +24,11 @@
     <title>Košík | FAJN Nábytek</title>
 </head>
 <body>
+<div id="page-wrap">
     <header>
         {%include 'partials/header.html'%}
     </header>
-    </div>
+
     <div class="cart-body">
         <div class="cart-body-left">
             <div class="cart-name">
@@ -40,7 +41,7 @@
                 <div class="cart-product">
                     <div class="product-text">
                         <h5>{{cart_item.product.name}}</h5>
-                        <p class="stock">Datum dodání: do {{cart_item.product.eta}} týdnů</p>
+                        <p class="stock">Doba dodání: do {{cart_item.product.eta}} týdnů</p>
                     </div>
                     <div class="product-counter">
                         <span><a href="{%url 'remove_cart' cart_item.product.id%}"><button class="count">-</button></a></span>
@@ -128,4 +129,5 @@
     <footer>
         {%include 'partials/footer.html'%}
     </footer>
+</div>
 </body>

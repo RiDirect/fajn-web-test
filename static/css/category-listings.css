@@ -45,3 +45,15 @@ a {
     width: 60%;
 }
 
+@media screen and (max-width: 450px) {
+    .category-card {
+        width: 100%;
+        min-height: 50px;
+    }
+}
+
+@media screen and (min-width: 451px) and (max-width: 800px) {
+    .category-card {
+        width: 45%;
+    }
+}
