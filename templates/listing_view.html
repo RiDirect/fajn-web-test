@@ -74,15 +74,16 @@
             </div>
     <div class="listings-view">
         <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-2">
             <div class="filters">
                 <h2>Filtry</h2>
             </div>
         </div>
-        <div class="col-lg-9">
+        <div class="col-lg-10">
             <div class="products-list">
-            <div class="product-container">
+            <div class="product-box">
                 {%for listing in listings%}
+            <div class="product-container">
                 <div class="product-card">
                     <div class="imgBx">
                         {%if listing.sub_category%}
@@ -119,6 +120,7 @@
                         {%endif%}
             
                 </div>
+            </div>
             </div>
             {%endfor%}
             </div>
